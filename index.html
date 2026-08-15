@@ -80,6 +80,7 @@
       background-size: 1.1em;
     }
 
+
     /* 花瓣飄落動畫 */
     @keyframes fallingPetals {
       0% {
@@ -145,7 +146,7 @@
 
   <section class="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center text-center overflow-visible">
     <!-- 背景大圖與優雅遮罩 -->
-   <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="absolute inset-0 z-0 overflow-hidden">
       <img src="https://i.postimg.cc/rsX8rm89/DSCF5786.jpg" alt="Wedding Cover" class="hero-bg-img w-full h-full object-cover object-center filter brightness-[0.92] transition-transform duration-500">
       <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-morandi-bg/90"></div>
     </div>
@@ -177,7 +178,6 @@
 
         <!-- 倒數數字區塊 -->
         <div id="countdown" class="grid grid-cols-4 gap-2 sm:gap-4">
-          
           <!-- Days -->
           <div class="bg-white/90 rounded-xl p-2 sm:p-3 text-center border border-morandi-goldLight/30 shadow-sm flex items-center justify-center space-x-2 sm:space-x-3">
             <span id="days" class="font-cormorant text-2xl sm:text-4xl font-bold text-morandi-gold">00</span>
@@ -205,7 +205,6 @@
             <div class="h-5 sm:h-7 w-[1px] bg-morandi-gold/30"></div>
             <span class="text-[10px] sm:text-xs tracking-wider text-morandi-dark font-medium uppercase">秒<br><span class="text-[8px] font-cormorant text-morandi-muted">SEC</span></span>
           </div>
-
         </div>
       </div>
     </div>
@@ -279,7 +278,7 @@
             <p class="text-sm text-morandi-muted mt-1">中午 12:00 入席（11:30 開始迎賓）</p>
           </div>
           <!-- Google 行事曆按鈕 -->
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E2%9D%A4%EF%B8%8F+%E6%A5%8A%E6%89%BF%E9%A4%98+%26+%E9%8D%BE%E7%A6%B9%E5%BD%A4+%E5%A9%9A%E7%A6%AE%E5%AE%B4%E5%AE%A2&dates=20270227T040000Z/20270227T070000Z&details=%E8%AA%A0%E6%8C%9A%E9%82%80%E8%AB%8B%E6%82%A8%E5%85%B1%E5%90%8C%E8%A6%8B%E8%AD%89%E6%A5%8A%E6%89%BF%E9%A4%98%E8%88%87%E9%8D%BE%E7%A6%B9%E5%BD%A4%E7%9A%84%E5%B9%B8%E7%A6%8F%E6%99%82%E5%88%BB%EF%BC%81&location=%E8%8A%B3%E5%BA%AD%E8%B7%AF%E5%A3%B9%E8%99%9F%E8%8E%8A%E5%9C%92%EF%BC%8C406+%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E8%8A%B3%E5%BA%AD%E8%B7%AF1%E8%99%9F" 
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E2%9D%A4%EF%B8%8F+%E6%A5%8A%E6%89%BF%E9%A4%98+%26+%E9%8D%80%E7%9A%B9%E5%BD%A4+%E5%A9%9A%E7%A6%AE%E5%AE%B4%E5%AE%A2&dates=20270227T040000Z/20270227T070000Z&details=%E8%AA%A0%E6%8C%9A%E9%82%80%E8%AB%8B%E6%82%A8%E5%85%B1%E5%90%8C%E8%A6%8B%E8%AD%89%E6%A5%8A%E6%89%BF%E9%A4%98%E8%88%87%E9%8D%80%E7%9A%B9%E5%BD%A4%E7%9A%84%E5%B9%B8%E7%A6%8F%E6%99%82%E5%88%BB%EF%BC%81&location=406+%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E8%8A%B3%E5%BA%AD%E8%B7%AF1%E8%99%9F" 
              target="_blank" 
              class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-full bg-morandi-gold/10 text-morandi-gold hover:bg-morandi-gold hover:text-white transition duration-300 text-xs sm:text-sm font-medium shrink-0 mt-2 sm:mt-0">
             <i class="fa-regular fa-calendar-plus"></i>
@@ -312,6 +311,27 @@
               <span>開啟地圖</span>
               <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
             </a>
+          </div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="glow-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 border border-white">
+          <div class="w-14 h-14 rounded-2xl bg-morandi-gold/15 flex items-center justify-center text-morandi-gold text-2xl shrink-0">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="text-center sm:text-left flex-1">
+            <span class="font-cormorant text-xs tracking-widest text-morandi-gold uppercase font-bold">Important Notes</span>
+            <h3 class="text-xl font-bold text-morandi-dark mt-1">溫馨注意事項</h3>
+            <div class="mt-2 text-sm text-morandi-muted space-y-2 leading-relaxed">
+              <p class="flex items-start gap-2 justify-center sm:justify-start">
+                <i class="fa-solid fa-bugs text-morandi-gold mt-1 text-xs shrink-0"></i>
+                <span>莊園位於山區親近自然環境，蚊蟲較多，建議賓客可準備防蚊用品或穿著防護衣物。</span>
+              </p>
+              <p class="flex items-start gap-2 justify-center sm:justify-start">
+                <i class="fa-solid fa-square-parking text-morandi-gold mt-1 text-xs shrink-0"></i>
+                <span>車輛無法直接駛至會場門口，請先將愛車停放於專屬停車場後，再步行漫步進入莊園。</span>
+              </p>
+            </div>
           </div>
         </div>
 
@@ -433,8 +453,8 @@
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
           參加午宴人數 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">GUEST COUNT</span> <span class="text-red-400">*</span>
         </label>
-        <select name="entry.1188616045" 
-                id="guestCountSelect" 
+        <input type="hidden" name="entry.1188616045" id="guestCountHidden" value="">
+        <select id="guestCountSelect" 
                 required 
                 onchange="handleGuestCountChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
@@ -443,8 +463,23 @@
           <option value="2位">2位</option>
           <option value="3位">3位</option>
           <option value="4位">4位</option>
+          <option value="other">其他 (自行輸入人數)</option>
           <option value="0位">0位 (無法出席)</option>
         </select>
+
+        <!-- 自訂人數輸入框 -->
+        <div id="customGuestCountBlock" class="hidden mt-3">
+          <div class="relative">
+            <input type="number" 
+                   id="customGuestCountInput" 
+                   min="1" 
+                   max="30" 
+                   placeholder="請輸入參加人數" 
+                   oninput="updateCustomGuestCount()"
+                   class="w-full px-4 py-3 rounded-xl border-2 border-morandi-gold focus:ring-2 focus:ring-morandi-gold/20 outline-none transition text-sm bg-white pr-12">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-morandi-muted font-medium">位</span>
+          </div>
+        </div>
       </div>
 
       <!-- 智能表單動態區塊 (當人數 > 0 時展開) -->
@@ -485,7 +520,9 @@
           喜帖領取方式 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">INVITATION METHOD</span> <span class="text-red-400">*</span>
         </label>
         <select name="entry.2080928339" 
+                id="invitationMethodSelect"
                 required 
+                onchange="handleInvitationMethodChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇喜帖領取方式</option>
           <option value="需要，請寄電子喜帖給我">需要，請寄電子喜帖給我</option>
@@ -495,25 +532,29 @@
       </div>
 
       <!-- 電子郵件 EMAIL -->
-      <div>
+      <div id="emailContainer" class="p-3 rounded-2xl border border-transparent transition-all duration-300">
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
-          電子郵件 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">EMAIL</span>
+          電子郵件 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">EMAIL</span> <span id="emailRequiredStar" class="text-red-400 hidden">*</span>
         </label>
         <input type="email" 
+               id="emailInput"
                name="entry.1521896031" 
-               placeholder="example@gmail.com" 
-               class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80">
+               placeholder="請先選擇喜帖領取方式" 
+               disabled
+               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60">
       </div>
 
       <!-- 郵寄地址 ADDRESS -->
-      <div>
+      <div id="addressContainer" class="p-3 rounded-2xl border border-transparent transition-all duration-300">
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
-          郵寄地址 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">ADDRESS</span>
+          郵寄地址 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">ADDRESS</span> <span id="addressRequiredStar" class="text-red-400 hidden">*</span>
         </label>
         <input type="text" 
+               id="addressInput"
                name="entry.1299100011" 
-               placeholder="請輸入郵遞區號與完整地址（選填紙本喜帖者必填）" 
-               class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80">
+               placeholder="請先選擇喜帖領取方式" 
+               disabled
+               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60">
       </div>
 
       <!-- 祝福話語 BLESSINGS -->
@@ -565,48 +606,8 @@
   </footer>
 
   <script>
-    // 倒數計時邏輯 (目標時間：2027年2月27日 12:00:00)
-    const targetDate = new Date('2027-02-27T12:00:00').getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById('days').innerText = String(days).padStart(2, '0');
-        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-      } else {
-        document.getElementById('countdown').innerHTML = `<div class="col-span-4 text-center text-morandi-gold font-bold py-2">婚禮正是今天！歡迎光臨！</div>`;
-      }
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // 交通指引摺疊式面板 (Accordion) 控制
-    function toggleAccordion(id) {
-      const content = document.getElementById(id);
-      const icon = document.getElementById('icon-' + id);
-      
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        icon.classList.add('rotate-180');
-      } else {
-        content.classList.add('hidden');
-        icon.classList.remove('rotate-180');
-      }
-    }
-
-    // 複製地址與 Toast 提示
     function copyAddress() {
-      const addressText = "406 臺中市北屯區民政里芳庭路1號";
+      const addressText = "406 台中市北屯區芳庭路1號";
       if (navigator.clipboard) {
         navigator.clipboard.writeText(addressText).then(showToast).catch(() => fallbackCopy(addressText));
       } else {
@@ -634,20 +635,151 @@
       }, 3000);
     }
 
-    // 智能表單動態邏輯：當『參加午宴人數』> 0 時顯示飲食與兒童椅需求
-    function handleGuestCountChange() {
-      const guestSelect = document.getElementById('guestCountSelect');
-      const dynamicBlock = document.getElementById('dynamicDietAndChairBlock');
-      const selectedValue = guestSelect.value;
+    function updateCountdown() {
+      const targetDate = new Date('2027-02-27T12:00:00+08:00').getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
 
-      if (selectedValue && selectedValue !== '0位 (無法出席)') {
-        dynamicBlock.classList.remove('hidden');
+      if (diff <= 0) {
+        document.getElementById('days').innerText = '00';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function toggleAccordion(id) {
+      const content = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
       } else {
-        dynamicBlock.classList.add('hidden');
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
       }
     }
 
-    // 出席意願選擇連動人數
+    function handleGuestCountChange() {
+      const guestSelect = document.getElementById('guestCountSelect');
+      const customBlock = document.getElementById('customGuestCountBlock');
+      const guestHidden = document.getElementById('guestCountHidden');
+      const dynamicBlock = document.getElementById('dynamicDietAndChairBlock');
+      const selectedValue = guestSelect.value;
+
+      if (selectedValue === 'other') {
+        customBlock.classList.remove('hidden');
+        updateCustomGuestCount();
+        dynamicBlock.classList.remove('hidden');
+      } else {
+        customBlock.classList.add('hidden');
+        guestHidden.value = selectedValue;
+        if (selectedValue === '0位 (無法出席)' || selectedValue === '') {
+          dynamicBlock.classList.add('hidden');
+        } else {
+          dynamicBlock.classList.remove('hidden');
+        }
+      }
+    }
+
+    function updateCustomGuestCount() {
+      const customInput = document.getElementById('customGuestCountInput');
+      const guestHidden = document.getElementById('guestCountHidden');
+      const val = customInput.value.trim();
+      if (val) {
+        guestHidden.value = val + '位';
+      } else {
+        guestHidden.value = '';
+      }
+    }
+
+    function handleInvitationMethodChange() {
+      const methodSelect = document.getElementById('invitationMethodSelect');
+      const emailContainer = document.getElementById('emailContainer');
+      const emailInput = document.getElementById('emailInput');
+      const emailStar = document.getElementById('emailRequiredStar');
+
+      const addressContainer = document.getElementById('addressContainer');
+      const addressInput = document.getElementById('addressInput');
+      const addressStar = document.getElementById('addressRequiredStar');
+
+      const val = methodSelect.value;
+
+      const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80";
+      const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60";
+
+      // 電子喜帖模式
+      if (val === '需要，請寄電子喜帖給我') {
+        // 電子郵件 -> 開放 & 必填 & 高亮
+        emailInput.disabled = false;
+        emailInput.required = true;
+        emailInput.className = activeClass;
+        emailInput.placeholder = "example@gmail.com";
+        emailStar.classList.remove('hidden');
+        emailContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
+        
+        // 郵寄地址 -> 停用 & 非必填 & 取消高亮
+        addressInput.disabled = true;
+        addressInput.required = false;
+        addressInput.value = '';
+        addressInput.className = disabledClass;
+        addressInput.placeholder = "不需要填寫郵寄地址";
+        addressStar.classList.add('hidden');
+        addressContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+      } 
+      // 紙本喜帖模式
+      else if (val === '需要，請寄紙本喜帖給我') {
+        // 郵寄地址 -> 開放 & 必填 & 高亮
+        addressInput.disabled = false;
+        addressInput.required = true;
+        addressInput.className = activeClass;
+        addressInput.placeholder = "請輸入郵遞區號與完整地址";
+        addressStar.classList.remove('hidden');
+        addressContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
+
+        // 電子郵件 -> 停用 & 非必填 & 取消高亮
+        emailInput.disabled = true;
+        emailInput.required = false;
+        emailInput.value = '';
+        emailInput.className = disabledClass;
+        emailInput.placeholder = "不需要填寫電子郵件";
+        emailStar.classList.add('hidden');
+        emailContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+      } 
+      // 不需要喜帖或其他
+      else {
+        emailInput.disabled = true;
+        emailInput.required = false;
+        emailInput.value = '';
+        emailInput.className = disabledClass;
+        emailInput.placeholder = "不需要喜帖";
+        emailStar.classList.add('hidden');
+        emailContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+
+        addressInput.disabled = true;
+        addressInput.required = false;
+        addressInput.value = '';
+        addressInput.className = disabledClass;
+        addressInput.placeholder = "不需要喜帖";
+        addressStar.classList.add('hidden');
+        addressContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+      }
+    }
+
     function handleAttendanceChange() {
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
@@ -661,28 +793,24 @@
       }
     }
 
-    // 送出狀態
     function showSubmittingState() {
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> 正在傳送中...`;
     }
 
-    // 表單成功提交處理
     function onFormSubmitSuccess() {
       const modal = document.getElementById('successModal');
       const modalCard = document.getElementById('modalCard');
       const btn = document.getElementById('submitBtn');
 
-      // 重置按鈕
       btn.disabled = false;
       btn.innerHTML = `<span>送出回函 CONFIRM</span>`;
 
-      // 重置表單
       document.getElementById('weddingForm').reset();
       handleGuestCountChange();
+      handleInvitationMethodChange();
 
-      // 顯示 Modal
       modal.classList.remove('hidden');
       setTimeout(() => {
         modal.classList.remove('opacity-0');

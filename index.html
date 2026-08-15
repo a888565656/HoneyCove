@@ -112,33 +112,37 @@
   </nav>
 
   <!-- 3. 首頁全螢幕封面背景 -->
-  <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-16">
-    <!-- 背景大圖與優雅遮罩 -->
+ <section class="relative min-h-[100dvh] flex flex-col justify-between items-center text-center overflow-hidden pt-20 pb-8">
+    
+    <!-- 背景大圖：手機版改用 object-[center_25%] 向上偏置對焦，避免人物臉部被中間標題遮住 -->
     <div class="absolute inset-0 z-0">
-      <img src="https://i.postimg.cc/rsX8rm89/DSCF5786.jpg" alt="Wedding Cover" class="w-full h-full object-cover object-center filter brightness-[0.92]">
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-morandi-bg/90"></div>
+      <img src="https://i.postimg.cc/rsX8rm89/DSCF5786.jpg" alt="Wedding Cover" class="w-full h-full object-cover object-[center_25%] sm:object-center filter brightness-[0.92]">
+      <!-- 壓暗背景漸層，確保高亮/光感強烈的婚紗照也能清晰襯托白字與金字 -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-morandi-bg/95"></div>
+    </div>
+    <!-- 1. 封面主標題與文字區塊：精簡上方文字以減少照片遮擋 -->
+    <div class="relative z-10 px-4 max-w-xl mx-auto my-auto py-4 w-full">
+      <div class="space-y-3 text-center">
+        <p class="font-cormorant tracking-[0.3em] uppercase text-sm sm:text-base text-morandi-goldLight font-bold [text-shadow:0_2px_8px_rgba(0,0,0,0.95),0_0_15px_rgba(0,0,0,0.8)]">
+          Save The Date
+        </p>
+        <h1 class="text-3xl sm:text-5xl font-normal tracking-wide text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.95),0_0_20px_rgba(0,0,0,0.8)]">
+          楊承餘 <span class="font-cormorant italic text-2xl sm:text-4xl mx-1 text-morandi-goldLight">&</span> 鍾禹彤
+        </h1>
+        <div class="w-16 h-[1px] bg-morandi-goldLight mx-auto my-3 shadow-[0_0_8px_rgba(0,0,0,0.8)]"></div>
+        <p class="text-sm sm:text-base font-light tracking-widest text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.95),0_0_15px_rgba(0,0,0,0.8)]">
+          誠摯邀請您 共同見證我們的幸福時刻
+        </p>
+      </div>
     </div>
 
-    <!-- 封面文字內容 -->
-    <div class="relative z-10 px-4 max-w-3xl mx-auto text-white mt-12 mb-20">
-      <p class="font-cormorant tracking-[0.3em] uppercase text-sm sm:text-base mb-3 text-morandi-goldLight">
-        Save The Date
-      </p>
-      <h1 class="text-4xl sm:text-6xl font-normal tracking-wide mb-4 drop-shadow-md">
-        楊承餘 <span class="font-cormorant italic text-3xl sm:text-5xl mx-2 text-morandi-goldLight">&</span> 鍾禹彤
-      </h1>
-      <div class="w-16 h-[1px] bg-morandi-goldLight/70 mx-auto my-6"></div>
-      <p class="text-base sm:text-lg font-light tracking-widest text-slate-100 drop-shadow">
-        誠摯邀請您 共同見證我們的幸福時刻
-      </p>
-      <p class="font-cormorant text-lg sm:text-xl tracking-widest mt-2 text-morandi-goldLight font-medium">
-        February 27, 2027 • Saturday
-      </p>
-    </div>
-
-    <!-- 2. 計時器視覺 (白色微光卡片 + 柔和陰影 + 垂直細線分隔) -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-xl px-4 z-20">
+    <!-- 2. 倒數計時器卡片：包含日期資訊與倒數計時 -->
+    <div class="relative w-full max-w-xl px-4 z-20 mt-auto">
       <div class="glow-card rounded-2xl p-4 sm:p-6 border border-white/70">
+        <p class="font-cormorant text-base sm:text-lg tracking-widest text-morandi-gold font-bold text-center mb-1">
+          February 27, 2027 • Saturday
+        </p>
+        <div class="w-10 h-[1px] bg-morandi-gold/30 mx-auto mb-2.5"></div>
         <p class="text-xs tracking-[0.25em] text-morandi-muted uppercase text-center mb-3 font-cormorant font-semibold">
           Countdown to Our Special Day
         </p>

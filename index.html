@@ -80,6 +80,14 @@
       background-size: 1.1em;
     }
 
+    /* 手機版背景圖視差放大與偏置效果 */
+    @media (max-width: 767px) {
+      .hero-bg-img {
+        object-position: center 0% !important;
+        transform: scale(1.35) translateY(-25px) !important;
+        transform-origin: top center !important;
+      }
+    }
 
     /* 花瓣飄落動畫 */
     @keyframes fallingPetals {
@@ -108,7 +116,7 @@
   </style>
 
   <script>
-    // 全局表單提交狀態標記 (防止 iframe 載入時發生 ReferenceError)
+    // 全局表單提交狀態標記
     var submitted = false;
   </script>
 </head>
@@ -151,8 +159,8 @@
       <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-morandi-bg/90"></div>
     </div>
 
-    <!-- 主標題文字：絕對定位在照片底部由下往上 30% 的位置 -->
-    <div class="absolute bottom-[30%] left-1/2 -translate-x-1/2 translate-y-1/2 z-10 px-4 w-full max-w-3xl text-center text-white">
+    <!-- 主標題文字：絕對定位在照片底部由下往上 40% 的位置 -->
+    <div class="absolute bottom-[40%] left-1/2 -translate-x-1/2 translate-y-1/2 z-10 px-4 w-full max-w-3xl text-center text-white">
       <p class="font-cormorant tracking-[0.35em] uppercase text-xs sm:text-base mb-3 text-amber-200 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
         Save The Date
       </p>
@@ -314,7 +322,7 @@
           </div>
         </div>
 
-        <!-- 注意事項 -->
+        <!-- 溫馨注意事項 -->
         <div class="glow-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 border border-white">
           <div class="w-14 h-14 rounded-2xl bg-morandi-gold/15 flex items-center justify-center text-morandi-gold text-2xl shrink-0">
             <i class="fa-solid fa-circle-info"></i>
@@ -385,12 +393,17 @@
     <!-- 隱藏 Iframe -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted){onFormSubmitSuccess();}"></iframe>
 
-    <!-- 網頁回函表單 -->
+    <!-- 
+      重要說明：若您填寫表單後 Google 後台看不到回應，請檢查以下 3 點：
+      1. 確定 action 網址是您個人的 Google 表單網址（結尾必須為 /formResponse）。
+      2. 確定您的 Google 表單設定中：「限制 1 次回覆」或「要求登入」已關閉。
+      3. 確定每一個 input/select 的 name="entry.XXXXX" ID 與您表單後台相符。
+    -->
     <form action="https://docs.google.com/forms/d/e/1FAIpQLScXnG-IbotpPA-3cRRS-v-2wFuAljnAn5N72HmZAOgverUwEQ/formResponse" 
           method="POST" 
           target="hidden_iframe" 
           id="weddingForm" 
-          onsubmit="submitted=true; showSubmittingState();" 
+          onsubmit="prepareBeforeSubmit(); submitted=true; showSubmittingState();" 
           class="glow-card rounded-2xl p-6 sm:p-10 border border-white space-y-6">
 
       <!-- 姓名 NAME -->
@@ -399,7 +412,7 @@
           姓名 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">NAME</span> <span class="text-red-400">*</span>
         </label>
         <input type="text" 
-               name="entry.2047345391" 
+               name="entry.2047345391"
                required 
                placeholder="請輸入您的姓名" 
                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80">
@@ -578,7 +591,6 @@
     </form>
   </section>
 
-  <!-- 送出成功提示彈窗 -->
   <div id="successModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300 px-4">
     <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl border border-morandi-goldLight/40 transform scale-95 transition-transform duration-300" id="modalCard">
       <div class="w-16 h-16 rounded-full bg-morandi-sage/20 text-morandi-sage flex items-center justify-center text-2xl mx-auto mb-4">
@@ -594,7 +606,6 @@
     </div>
   </div>
 
-  <!-- Toast 訊息通知 -->
   <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-morandi-dark text-white text-xs sm:text-sm px-6 py-3 rounded-full shadow-lg border border-morandi-goldLight/30 hidden opacity-0 transition-all duration-300 flex items-center gap-2">
     <i class="fa-solid fa-circle-check text-morandi-goldLight"></i>
     <span id="toastMsg">地址已成功複製！</span>
@@ -722,9 +733,7 @@
       const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80";
       const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60";
 
-      // 電子喜帖模式
       if (val === '需要，請寄電子喜帖給我') {
-        // 電子郵件 -> 開放 & 必填 & 高亮
         emailInput.disabled = false;
         emailInput.required = true;
         emailInput.className = activeClass;
@@ -732,7 +741,6 @@
         emailStar.classList.remove('hidden');
         emailContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
         
-        // 郵寄地址 -> 停用 & 非必填 & 取消高亮
         addressInput.disabled = true;
         addressInput.required = false;
         addressInput.value = '';
@@ -741,9 +749,7 @@
         addressStar.classList.add('hidden');
         addressContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
       } 
-      // 紙本喜帖模式
       else if (val === '需要，請寄紙本喜帖給我') {
-        // 郵寄地址 -> 開放 & 必填 & 高亮
         addressInput.disabled = false;
         addressInput.required = true;
         addressInput.className = activeClass;
@@ -751,7 +757,7 @@
         addressStar.classList.remove('hidden');
         addressContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
 
-        // 電子郵件 -> 停用 & 非必填 & 取消高亮
+        emailInput.disabled = false;
         emailInput.disabled = true;
         emailInput.required = false;
         emailInput.value = '';
@@ -760,7 +766,6 @@
         emailStar.classList.add('hidden');
         emailContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
       } 
-      // 不需要喜帖或其他
       else {
         emailInput.disabled = true;
         emailInput.required = false;
@@ -790,6 +795,15 @@
       } else if (attendanceSelect.value === '當然，一定到!' && guestSelect.value === '0位 (無法出席)') {
         guestSelect.value = '1位';
         handleGuestCountChange();
+      }
+    }
+
+    // 提交前準備：確保 hidden input 填妥，避免空值送出
+    function prepareBeforeSubmit() {
+      const guestSelect = document.getElementById('guestCountSelect');
+      const guestHidden = document.getElementById('guestCountHidden');
+      if (guestSelect.value && guestSelect.value !== 'other') {
+        guestHidden.value = guestSelect.value;
       }
     }
 

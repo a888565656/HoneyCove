@@ -464,7 +464,7 @@
       <!-- 參加午宴人數 GUEST COUNT -->
       <div>
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
-          參加午宴人數 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">GUEST COUNT</span> <span class="text-red-400">*</span>
+          參加午宴人數 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">GUEST COUNT</span> <span id="guestCountRequiredStar" class="text-red-400">*</span>
         </label>
         <input type="hidden" name="entry.1188616045" id="guestCountHidden" value="">
         <select id="guestCountSelect" 
@@ -476,23 +476,13 @@
           <option value="2位">2位</option>
           <option value="3位">3位</option>
           <option value="4位">4位</option>
-          <option value="other">其他 (自行輸入人數)</option>
-          <option value="0位">0位 (無法出席)</option>
+          <option value="5位">5位</option>
+          <option value="6位">6位</option>
+          <option value="7位">7位</option>
+          <option value="8位">8位</option>
+          <option value="9位">9位</option>
+          <option value="10位">10位</option>
         </select>
-
-        <!-- 自訂人數輸入框 -->
-        <div id="customGuestCountBlock" class="hidden mt-3">
-          <div class="relative">
-            <input type="number" 
-                   id="customGuestCountInput" 
-                   min="1" 
-                   max="30" 
-                   placeholder="請輸入參加人數" 
-                   oninput="updateCustomGuestCount()"
-                   class="w-full px-4 py-3 rounded-xl border-2 border-morandi-gold focus:ring-2 focus:ring-morandi-gold/20 outline-none transition text-sm bg-white pr-12">
-            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-morandi-muted font-medium">位</span>
-          </div>
-        </div>
       </div>
 
       <!-- 智能表單動態區塊 (當人數 > 0 時展開) -->
@@ -503,12 +493,11 @@
           <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
             飲食需求 (素食人數) <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">DIET</span>
           </label>
-          <select name="entry.630238932" 
+          <input type="hidden" name="entry.1535829381" id="dietHidden" value="0">
+          <select id="dietSelect" 
+                  onchange="handleDietChange()"
                   class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
             <option value="0" selected>全葷食 (0位素食)</option>
-            <option value="1">1位素食</option>
-            <option value="2">2位素食</option>
-            <option value="3">3位素食</option>
           </select>
         </div>
 
@@ -517,11 +506,14 @@
           <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
             兒童椅需求 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">HIGH CHAIRS</span>
           </label>
-          <select name="entry.1535829381" 
+          <input type="hidden" name="entry.630238932" id="chairsHidden" value="0">
+          <select id="chairsSelect" 
+                  onchange="handleChairsChange()"
                   class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
             <option value="0" selected>不需要</option>
             <option value="1">需要 1 張</option>
             <option value="2">需要 2 張</option>
+            <option value="3">需要 3 張</option>
           </select>
         </div>
 
@@ -538,9 +530,9 @@
                 onchange="handleInvitationMethodChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇喜帖領取方式</option>
-          <option value="需要，請寄電子喜帖給我">需要，請寄電子喜帖給我</option>
-          <option value="需要，請寄紙本喜帖給我">需要，請寄紙本喜帖給我</option>
-          <option value="不需要喜帖">不需要喜帖</option>
+          <option value="需要，請寄電子喜帖給我 (請跳至Q9)">需要，請寄電子喜帖給我</option>
+          <option value="需要，請寄紙本喜帖給我 (請跳至Q10)">需要，請寄紙本喜帖給我</option>
+          <option value="不需要喜帖 (請跳至Q11)">不需要喜帖</option>
         </select>
       </div>
 
@@ -578,6 +570,17 @@
         <textarea name="entry.1716942766" 
                   rows="3" 
                   placeholder="寫下您想對承餘與禹彤說的話..." 
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80 resize-none"></textarea>
+      </div>
+
+      <!-- 特殊需求 SPECIAL REQUESTS -->
+      <div>
+        <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
+          特殊需求 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">SPECIAL REQUESTS</span>
+        </label>
+        <textarea name="entry.1777039153" 
+                  rows="3" 
+                  placeholder="如有無障礙需求、食物過敏或其它想告知新人的事宜，請在此註明..." 
                   class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80 resize-none"></textarea>
       </div>
 
@@ -685,37 +688,68 @@
       }
     }
 
+    function getNumericGuestCount() {
+      const guestSelect = document.getElementById('guestCountSelect');
+      if (guestSelect.disabled) return 0;
+      const selectedValue = guestSelect.value;
+      if (!selectedValue) return 0;
+      const match = selectedValue.match(/\d+/);
+      return match ? parseInt(match[0], 10) : 0;
+    }
+
+    function updateDietOptions(count) {
+      const select = document.getElementById('dietSelect');
+      const hidden = document.getElementById('dietHidden');
+      const currentValue = select.value;
+
+      select.innerHTML = '';
+      
+      const opt0 = document.createElement('option');
+      opt0.value = '0';
+      opt0.textContent = '全葷食 (0位素食)';
+      select.appendChild(opt0);
+
+      for (let i = 1; i <= count; i++) {
+        const opt = document.createElement('option');
+        opt.value = String(i);
+        opt.textContent = (i === count && count > 1) ? `${i}位素食 (全素)` : `${i}位素食`;
+        select.appendChild(opt);
+      }
+
+      const match = Array.from(select.options).find(o => o.value === currentValue);
+      if (match) {
+        select.value = currentValue;
+      } else {
+        select.value = '0';
+      }
+      hidden.value = select.value;
+    }
+
     function handleGuestCountChange() {
       const guestSelect = document.getElementById('guestCountSelect');
-      const customBlock = document.getElementById('customGuestCountBlock');
       const guestHidden = document.getElementById('guestCountHidden');
       const dynamicBlock = document.getElementById('dynamicDietAndChairBlock');
       const selectedValue = guestSelect.value;
 
-      if (selectedValue === 'other') {
-        customBlock.classList.remove('hidden');
-        updateCustomGuestCount();
-        dynamicBlock.classList.remove('hidden');
+      guestHidden.value = selectedValue;
+      if (!selectedValue || guestSelect.disabled) {
+        dynamicBlock.classList.add('hidden');
       } else {
-        customBlock.classList.add('hidden');
-        guestHidden.value = selectedValue;
-        if (selectedValue === '0位 (無法出席)' || selectedValue === '') {
-          dynamicBlock.classList.add('hidden');
-        } else {
-          dynamicBlock.classList.remove('hidden');
-        }
+        dynamicBlock.classList.remove('hidden');
       }
+      updateDietOptions(getNumericGuestCount());
     }
 
-    function updateCustomGuestCount() {
-      const customInput = document.getElementById('customGuestCountInput');
-      const guestHidden = document.getElementById('guestCountHidden');
-      const val = customInput.value.trim();
-      if (val) {
-        guestHidden.value = val + '位';
-      } else {
-        guestHidden.value = '';
-      }
+    function handleDietChange() {
+      const select = document.getElementById('dietSelect');
+      const hidden = document.getElementById('dietHidden');
+      hidden.value = select.value;
+    }
+
+    function handleChairsChange() {
+      const select = document.getElementById('chairsSelect');
+      const hidden = document.getElementById('chairsHidden');
+      hidden.value = select.value;
     }
 
     function handleInvitationMethodChange() {
@@ -733,7 +767,7 @@
       const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80";
       const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60";
 
-      if (val === '需要，請寄電子喜帖給我') {
+      if (val.includes('電子喜帖')) {
         emailInput.disabled = false;
         emailInput.required = true;
         emailInput.className = activeClass;
@@ -749,7 +783,7 @@
         addressStar.classList.add('hidden');
         addressContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
       } 
-      else if (val === '需要，請寄紙本喜帖給我') {
+      else if (val.includes('紙本喜帖')) {
         addressInput.disabled = false;
         addressInput.required = true;
         addressInput.className = activeClass;
@@ -757,7 +791,6 @@
         addressStar.classList.remove('hidden');
         addressContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
 
-        emailInput.disabled = false;
         emailInput.disabled = true;
         emailInput.required = false;
         emailInput.value = '';
@@ -788,23 +821,50 @@
     function handleAttendanceChange() {
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
+      const guestStar = document.getElementById('guestCountRequiredStar');
+
+      const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80";
+      const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60 appearance-none";
 
       if (attendanceSelect.value === '遺憾無法前往...') {
-        guestSelect.value = '0位 (無法出席)';
+        guestSelect.value = '';
+        guestSelect.disabled = true;
+        guestSelect.required = false;
+        guestSelect.className = disabledClass;
+        if (guestStar) guestStar.classList.add('hidden');
         handleGuestCountChange();
-      } else if (attendanceSelect.value === '當然，一定到!' && guestSelect.value === '0位 (無法出席)') {
-        guestSelect.value = '1位';
+      } else if (attendanceSelect.value === '當然，一定到!') {
+        guestSelect.disabled = false;
+        guestSelect.required = true;
+        guestSelect.className = activeClass;
+        if (guestStar) guestStar.classList.remove('hidden');
+
+        if (!guestSelect.value) {
+          guestSelect.value = '1位';
+        }
         handleGuestCountChange();
       }
     }
 
     // 提交前準備：確保 hidden input 填妥，避免空值送出
     function prepareBeforeSubmit() {
+      const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
       const guestHidden = document.getElementById('guestCountHidden');
-      if (guestSelect.value && guestSelect.value !== 'other') {
+
+      if (attendanceSelect.value === '遺憾無法前往...') {
+        guestHidden.value = '0位';
+      } else if (guestSelect.value) {
         guestHidden.value = guestSelect.value;
       }
+
+      const dietSelect = document.getElementById('dietSelect');
+      const dietHidden = document.getElementById('dietHidden');
+      dietHidden.value = dietSelect.value || "0";
+
+      const chairsSelect = document.getElementById('chairsSelect');
+      const chairsHidden = document.getElementById('chairsHidden');
+      chairsHidden.value = chairsSelect.value || "0";
     }
 
     function showSubmittingState() {
@@ -823,6 +883,7 @@
 
       document.getElementById('weddingForm').reset();
       handleGuestCountChange();
+      handleChairsChange();
       handleInvitationMethodChange();
 
       modal.classList.remove('hidden');
@@ -844,5 +905,10 @@
       }, 300);
     }
   </script>
+
+  <footer class="py-8 bg-morandi-dark text-white/70 text-center text-xs tracking-widest border-t border-white/10">
+    <p class="font-cormorant text-sm text-morandi-goldLight mb-1">YANG & CHONG WEDDING 2027</p>
+    <p>© 2027 楊承餘 & 鍾禹彤. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>

@@ -58,7 +58,7 @@
       white-space: nowrap !important;
     }
 
-    /* 毛玻璃效果 */
+    /* 毛玻璃導覽列效果 */
     .glass-nav {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
@@ -78,15 +78,6 @@
       background-repeat: no-repeat;
       background-position: right 1rem center;
       background-size: 1.1em;
-    }
-
-    /* 手機版背景圖視差放大與偏置效果 */
-    @media (max-width: 767px) {
-      .hero-bg-img {
-        object-position: center 0% !important;
-        transform: scale(1.35) translateY(-25px) !important;
-        transform-origin: top center !important;
-      }
     }
 
     /* 花瓣飄落動畫 */
@@ -159,8 +150,8 @@
       <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-morandi-bg/90"></div>
     </div>
 
-    <!-- 主標題文字：絕對定位在照片底部由下往上 40% 的位置 -->
-    <div class="absolute bottom-[40%] left-1/2 -translate-x-1/2 translate-y-1/2 z-10 px-4 w-full max-w-3xl text-center text-white">
+    <!-- 主標題文字 -->
+    <div class="absolute bottom-[30%] left-1/2 -translate-x-1/2 translate-y-1/2 z-10 px-4 w-full max-w-3xl text-center text-white">
       <p class="font-cormorant tracking-[0.35em] uppercase text-xs sm:text-base mb-3 text-amber-200 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
         Save The Date
       </p>
@@ -173,10 +164,9 @@
       </p>
     </div>
 
-    <!-- 倒數計時器：置於照片最上層，且卡片水平中間線精準對齊照片底部 (bottom-0 + translate-y-1/2) -->
+    <!-- 倒數計時器卡片 -->
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-xl px-4 z-20">
       <div class="glow-card rounded-2xl p-4 sm:p-6 border border-white/80 shadow-2xl backdrop-blur-md">
-        <!-- 婚禮日期資訊 -->
         <p class="font-cormorant text-base sm:text-lg tracking-widest text-morandi-gold font-semibold text-center mb-0.5">
           February 27, 2027 • Saturday
         </p>
@@ -352,7 +342,7 @@
         </h3>
 
         <div class="space-y-3">
-          <!-- 自行開車 (預設展開) -->
+          <!-- 自行開車 -->
           <div class="bg-white rounded-xl border border-morandi-goldLight/30 overflow-hidden shadow-sm">
             <button onclick="toggleAccordion('acc-1')" class="w-full px-6 py-4 text-left font-medium text-morandi-dark flex justify-between items-center hover:bg-morandi-bg/40 transition">
               <span class="flex items-center"><i class="fa-solid fa-route text-morandi-gold mr-3"></i><span class="no-wrap">自行開車前往與停車資訊</span></span>
@@ -365,7 +355,7 @@
             </div>
           </div>
 
-          <!-- 大眾運輸 (預設展開) -->
+          <!-- 大眾運輸 -->
           <div class="bg-white rounded-xl border border-morandi-goldLight/30 overflow-hidden shadow-sm">
             <button onclick="toggleAccordion('acc-2')" class="w-full px-6 py-4 text-left font-medium text-morandi-dark flex justify-between items-center hover:bg-morandi-bg/40 transition">
               <span class="flex items-center"><i class="fa-solid fa-train text-morandi-sage mr-3"></i><span class="no-wrap">大眾運輸轉乘建議</span></span>
@@ -390,21 +380,15 @@
       <div class="w-12 h-[2px] bg-morandi-gold mx-auto mt-3"></div>
     </div>
 
-    <!-- 隱藏 Iframe -->
+    <!-- 隱藏 Iframe 實現零頁面跳轉提交 -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted){onFormSubmitSuccess();}"></iframe>
 
-    <!-- 
-      重要說明：若您填寫表單後 Google 後台看不到回應，請檢查以下 3 點：
-      1. 確定 action 網址是您個人的 Google 表單網址（結尾必須為 /formResponse）。
-      2. 確定您的 Google 表單設定中：「限制 1 次回覆」或「要求登入」已關閉。
-      3. 確定每一個 input/select 的 name="entry.XXXXX" ID 與您表單後台相符。
-    -->
     <form action="https://docs.google.com/forms/d/e/1FAIpQLScXnG-IbotpPA-3cRRS-v-2wFuAljnAn5N72HmZAOgverUwEQ/formResponse" 
           method="POST" 
           target="hidden_iframe" 
           id="weddingForm" 
           onsubmit="prepareBeforeSubmit(); submitted=true; showSubmittingState();" 
-          class="glow-card rounded-2xl p-6 sm:p-10 border border-white space-y-6">
+          class="glow-card rounded-2xl p-6 sm:p-10 border border-white space-y-5">
 
       <!-- 姓名 NAME -->
       <div>
@@ -466,12 +450,13 @@
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
           參加午宴人數 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">GUEST COUNT</span> <span id="guestCountRequiredStar" class="text-red-400">*</span>
         </label>
-        <input type="hidden" name="entry.1188616045" id="guestCountHidden" value="">
+        <input type="hidden" name="entry.1188616045" id="guestCountHidden" value="1位">
         <select id="guestCountSelect" 
                 required 
                 onchange="handleGuestCountChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇總人數</option>
+          <option value="0位" id="zeroGuestOption" hidden style="display: none;">0位 (不出席)</option>
           <option value="1位">1位</option>
           <option value="2位">2位</option>
           <option value="3位">3位</option>
@@ -486,8 +471,7 @@
       </div>
 
       <!-- 智能表單動態區塊 (當人數 > 0 時展開) -->
-      <div id="dynamicDietAndChairBlock" class="hidden space-y-6 pt-2 border-t border-dashed border-morandi-goldLight/40">
-        
+      <div id="dynamicDietAndChairBlock" class="hidden space-y-5 pt-4 border-t border-dashed border-morandi-goldLight/40">
         <!-- 飲食需求 DIET -->
         <div>
           <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
@@ -516,13 +500,12 @@
             <option value="3">需要 3 張</option>
           </select>
         </div>
-
       </div>
 
       <!-- 喜帖領取 INVITATION METHOD -->
       <div>
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
-          喜帖領取方式 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">INVITATION METHOD</span> <span class="text-red-400">*</span>
+          喜帖領取方式 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">INVITATION METHOD</span> <span id="invitationMethodRequiredStar" class="text-red-400">*</span>
         </label>
         <select name="entry.2080928339" 
                 id="invitationMethodSelect"
@@ -530,14 +513,14 @@
                 onchange="handleInvitationMethodChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇喜帖領取方式</option>
-          <option value="需要，請寄電子喜帖給我 (請跳至Q9)">需要，請寄電子喜帖給我</option>
-          <option value="需要，請寄紙本喜帖給我 (請跳至Q10)">需要，請寄紙本喜帖給我</option>
-          <option value="不需要喜帖 (請跳至Q11)">不需要喜帖</option>
+          <option value="需要，請寄電子喜帖給我">需要，請寄電子喜帖給我</option>
+          <option value="需要，請寄紙本喜帖給我">需要，請寄紙本喜帖給我</option>
+          <option value="不需要喜帖">不需要喜帖</option>
         </select>
       </div>
 
       <!-- 電子郵件 EMAIL -->
-      <div id="emailContainer" class="p-3 rounded-2xl border border-transparent transition-all duration-300">
+      <div id="emailContainer" class="p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300">
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
           電子郵件 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">EMAIL</span> <span id="emailRequiredStar" class="text-red-400 hidden">*</span>
         </label>
@@ -546,11 +529,11 @@
                name="entry.1521896031" 
                placeholder="請先選擇喜帖領取方式" 
                disabled
-               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60">
+               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 opacity-60">
       </div>
 
       <!-- 郵寄地址 ADDRESS -->
-      <div id="addressContainer" class="p-3 rounded-2xl border border-transparent transition-all duration-300">
+      <div id="addressContainer" class="p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300">
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
           郵寄地址 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">ADDRESS</span> <span id="addressRequiredStar" class="text-red-400 hidden">*</span>
         </label>
@@ -559,7 +542,7 @@
                name="entry.1299100011" 
                placeholder="請先選擇喜帖領取方式" 
                disabled
-               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60">
+               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 opacity-60">
       </div>
 
       <!-- 祝福話語 BLESSINGS -->
@@ -594,6 +577,7 @@
     </form>
   </section>
 
+  <!-- 成功送出彈出視窗 -->
   <div id="successModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300 px-4">
     <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl border border-morandi-goldLight/40 transform scale-95 transition-transform duration-300" id="modalCard">
       <div class="w-16 h-16 rounded-full bg-morandi-sage/20 text-morandi-sage flex items-center justify-center text-2xl mx-auto mb-4">
@@ -609,11 +593,13 @@
     </div>
   </div>
 
+  <!-- Toast 提示訊息 -->
   <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-morandi-dark text-white text-xs sm:text-sm px-6 py-3 rounded-full shadow-lg border border-morandi-goldLight/30 hidden opacity-0 transition-all duration-300 flex items-center gap-2">
     <i class="fa-solid fa-circle-check text-morandi-goldLight"></i>
     <span id="toastMsg">地址已成功複製！</span>
   </div>
 
+  <!-- 頁尾 -->
   <footer class="py-8 bg-morandi-dark text-white/70 text-center text-xs tracking-widest border-t border-white/10">
     <p class="font-cormorant text-sm text-morandi-goldLight mb-1">YANG & CHONG WEDDING 2027</p>
     <p>© 2027 楊承餘 & 鍾禹彤. All Rights Reserved.</p>
@@ -641,6 +627,7 @@
 
     function showToast() {
       const toast = document.getElementById('toast');
+      if (!toast) return;
       toast.classList.remove('hidden');
       setTimeout(() => toast.classList.remove('opacity-0'), 10);
       setTimeout(() => {
@@ -654,11 +641,18 @@
       const now = new Date().getTime();
       const diff = targetDate - now;
 
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minEl = document.getElementById('minutes');
+      const secEl = document.getElementById('seconds');
+
+      if (!daysEl || !hoursEl || !minEl || !secEl) return;
+
       if (diff <= 0) {
-        document.getElementById('days').innerText = '00';
-        document.getElementById('hours').innerText = '00';
-        document.getElementById('minutes').innerText = '00';
-        document.getElementById('seconds').innerText = '00';
+        daysEl.innerText = '00';
+        hoursEl.innerText = '00';
+        minEl.innerText = '00';
+        secEl.innerText = '00';
         return;
       }
 
@@ -667,10 +661,10 @@
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.getElementById('days').innerText = String(days).padStart(2, '0');
-      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      daysEl.innerText = String(days).padStart(2, '0');
+      hoursEl.innerText = String(hours).padStart(2, '0');
+      minEl.innerText = String(minutes).padStart(2, '0');
+      secEl.innerText = String(seconds).padStart(2, '0');
     }
 
     setInterval(updateCountdown, 1000);
@@ -679,19 +673,21 @@
     function toggleAccordion(id) {
       const content = document.getElementById(id);
       const icon = document.getElementById('icon-' + id);
+      if (!content) return;
       if (content.classList.contains('hidden')) {
         content.classList.remove('hidden');
-        icon.classList.add('rotate-180');
+        if (icon) icon.classList.add('rotate-180');
       } else {
         content.classList.add('hidden');
-        icon.classList.remove('rotate-180');
+        if (icon) icon.classList.remove('rotate-180');
       }
     }
 
     function getNumericGuestCount() {
       const guestSelect = document.getElementById('guestCountSelect');
-      if (guestSelect.disabled) return 0;
+      if (!guestSelect) return 0;
       const selectedValue = guestSelect.value;
+
       if (!selectedValue) return 0;
       const match = selectedValue.match(/\d+/);
       return match ? parseInt(match[0], 10) : 0;
@@ -700,6 +696,8 @@
     function updateDietOptions(count) {
       const select = document.getElementById('dietSelect');
       const hidden = document.getElementById('dietHidden');
+      if (!select) return;
+
       const currentValue = select.value;
 
       select.innerHTML = '';
@@ -722,34 +720,41 @@
       } else {
         select.value = '0';
       }
-      hidden.value = select.value;
+      if (hidden) hidden.value = select.value;
     }
 
     function handleGuestCountChange() {
       const guestSelect = document.getElementById('guestCountSelect');
       const guestHidden = document.getElementById('guestCountHidden');
       const dynamicBlock = document.getElementById('dynamicDietAndChairBlock');
+      
+      if (!guestSelect) return;
       const selectedValue = guestSelect.value;
 
-      guestHidden.value = selectedValue;
-      if (!selectedValue || guestSelect.disabled) {
-        dynamicBlock.classList.add('hidden');
-      } else {
-        dynamicBlock.classList.remove('hidden');
+      if (guestHidden) guestHidden.value = selectedValue || "1位";
+
+      const numCount = getNumericGuestCount();
+      if (dynamicBlock) {
+        if (numCount > 0) {
+          dynamicBlock.classList.remove('hidden');
+        } else {
+          dynamicBlock.classList.add('hidden');
+        }
       }
-      updateDietOptions(getNumericGuestCount());
+
+      updateDietOptions(numCount);
     }
 
     function handleDietChange() {
       const select = document.getElementById('dietSelect');
       const hidden = document.getElementById('dietHidden');
-      hidden.value = select.value;
+      if (select && hidden) hidden.value = select.value;
     }
 
     function handleChairsChange() {
       const select = document.getElementById('chairsSelect');
       const hidden = document.getElementById('chairsHidden');
-      hidden.value = select.value;
+      if (select && hidden) hidden.value = select.value;
     }
 
     function handleInvitationMethodChange() {
@@ -762,113 +767,197 @@
       const addressInput = document.getElementById('addressInput');
       const addressStar = document.getElementById('addressRequiredStar');
 
+      if (!methodSelect || !emailInput || !addressInput) return;
+
       const val = methodSelect.value;
 
       const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80";
-      const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60";
+      const inactiveClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 opacity-60";
+
+      const activeContainerClass = "p-2.5 -mx-2.5 rounded-xl border-2 border-morandi-gold bg-amber-50/60 shadow-sm transition-all duration-300";
+      const inactiveContainerClass = "p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300";
 
       if (val.includes('電子喜帖')) {
-        emailInput.disabled = false;
         emailInput.required = true;
+        emailInput.disabled = false;
         emailInput.className = activeClass;
         emailInput.placeholder = "example@gmail.com";
-        emailStar.classList.remove('hidden');
-        emailContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
+        if (emailStar) emailStar.classList.remove('hidden');
+        if (emailContainer) emailContainer.className = activeContainerClass;
         
-        addressInput.disabled = true;
         addressInput.required = false;
+        addressInput.disabled = true;
         addressInput.value = '';
-        addressInput.className = disabledClass;
+        addressInput.className = inactiveClass;
         addressInput.placeholder = "不需要填寫郵寄地址";
-        addressStar.classList.add('hidden');
-        addressContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+        if (addressStar) addressStar.classList.add('hidden');
+        if (addressContainer) addressContainer.className = inactiveContainerClass;
       } 
       else if (val.includes('紙本喜帖')) {
-        addressInput.disabled = false;
         addressInput.required = true;
+        addressInput.disabled = false;
         addressInput.className = activeClass;
         addressInput.placeholder = "請輸入郵遞區號與完整地址";
-        addressStar.classList.remove('hidden');
-        addressContainer.className = 'p-3 rounded-2xl border-2 border-morandi-gold bg-amber-50/60 shadow-md transition-all duration-300';
+        if (addressStar) addressStar.classList.remove('hidden');
+        if (addressContainer) addressContainer.className = activeContainerClass;
 
-        emailInput.disabled = true;
         emailInput.required = false;
+        emailInput.disabled = true;
         emailInput.value = '';
-        emailInput.className = disabledClass;
+        emailInput.className = inactiveClass;
         emailInput.placeholder = "不需要填寫電子郵件";
-        emailStar.classList.add('hidden');
-        emailContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+        if (emailStar) emailStar.classList.add('hidden');
+        if (emailContainer) emailContainer.className = inactiveContainerClass;
       } 
       else {
-        emailInput.disabled = true;
         emailInput.required = false;
+        emailInput.disabled = true;
         emailInput.value = '';
-        emailInput.className = disabledClass;
+        emailInput.className = inactiveClass;
         emailInput.placeholder = "不需要喜帖";
-        emailStar.classList.add('hidden');
-        emailContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+        if (emailStar) emailStar.classList.add('hidden');
+        if (emailContainer) emailContainer.className = inactiveContainerClass;
 
-        addressInput.disabled = true;
         addressInput.required = false;
+        addressInput.disabled = true;
         addressInput.value = '';
-        addressInput.className = disabledClass;
+        addressInput.className = inactiveClass;
         addressInput.placeholder = "不需要喜帖";
-        addressStar.classList.add('hidden');
-        addressContainer.className = 'p-3 rounded-2xl border border-transparent transition-all duration-300';
+        if (addressStar) addressStar.classList.add('hidden');
+        if (addressContainer) addressContainer.className = inactiveContainerClass;
       }
     }
 
     function handleAttendanceChange() {
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
+      const zeroOption = document.getElementById('zeroGuestOption');
+      const guestHidden = document.getElementById('guestCountHidden');
       const guestStar = document.getElementById('guestCountRequiredStar');
+      const invitationSelect = document.getElementById('invitationMethodSelect');
+      const invitationStar = document.getElementById('invitationMethodRequiredStar');
+
+      if (!attendanceSelect || !guestSelect || !invitationSelect) return;
 
       const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80";
-      const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 cursor-not-allowed opacity-60 appearance-none";
+      const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm appearance-none bg-slate-100 opacity-60 cursor-not-allowed";
 
       if (attendanceSelect.value === '遺憾無法前往...') {
-        guestSelect.value = '';
-        guestSelect.disabled = true;
+        // 顯示 0 位選項並鎖定為 0 位
+        if (zeroOption) {
+          zeroOption.hidden = false;
+          zeroOption.style.display = '';
+        }
+        guestSelect.value = '0位';
         guestSelect.required = false;
+        guestSelect.disabled = true;
         guestSelect.className = disabledClass;
+        if (guestHidden) guestHidden.value = '0位';
         if (guestStar) guestStar.classList.add('hidden');
+
+        // 關閉並禁用「喜帖領取方式」，預設帶入「不需要喜帖」
+        invitationSelect.value = '不需要喜帖';
+        invitationSelect.required = false;
+        invitationSelect.disabled = true;
+        invitationSelect.className = disabledClass;
+        if (invitationStar) invitationStar.classList.add('hidden');
+
+        // 更新連動子欄位（隱藏素食/兒童椅、清空並關閉 Email 與地址）
         handleGuestCountChange();
+        handleInvitationMethodChange();
       } else if (attendanceSelect.value === '當然，一定到!') {
+        // 隱藏 0 位選項
+        if (zeroOption) {
+          zeroOption.hidden = true;
+          zeroOption.style.display = 'none';
+        }
+
+        // 開啟「參加午宴人數」
         guestSelect.disabled = false;
         guestSelect.required = true;
         guestSelect.className = activeClass;
-        if (guestStar) guestStar.classList.remove('hidden');
-
-        if (!guestSelect.value) {
+        if (!guestSelect.value || guestSelect.value === '0位') {
           guestSelect.value = '1位';
         }
+        if (guestHidden) guestHidden.value = guestSelect.value;
+        if (guestStar) guestStar.classList.remove('hidden');
+
+        // 開啟「喜帖領取方式」
+        invitationSelect.disabled = false;
+        invitationSelect.required = true;
+        invitationSelect.className = activeClass;
+        if (invitationSelect.value === '不需要喜帖') {
+          invitationSelect.value = '';
+        }
+        if (invitationStar) invitationStar.classList.remove('hidden');
+
+        // 更新連動子欄位
         handleGuestCountChange();
+        handleInvitationMethodChange();
       }
     }
 
-    // 提交前準備：確保 hidden input 填妥，避免空值送出
     function prepareBeforeSubmit() {
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
       const guestHidden = document.getElementById('guestCountHidden');
+      const dietHidden = document.getElementById('dietHidden');
+      const chairsHidden = document.getElementById('chairsHidden');
+      const invitationMethodSelect = document.getElementById('invitationMethodSelect');
+      const emailInput = document.getElementById('emailInput');
+      const addressInput = document.getElementById('addressInput');
 
-      if (attendanceSelect.value === '遺憾無法前往...') {
-        guestHidden.value = '0位';
-      } else if (guestSelect.value) {
-        guestHidden.value = guestSelect.value;
+      if (attendanceSelect && attendanceSelect.value === '遺憾無法前往...') {
+        if (guestHidden) {
+          guestHidden.disabled = false;
+          guestHidden.value = "0位";
+        }
+        if (dietHidden) {
+          dietHidden.disabled = false;
+          dietHidden.value = "0";
+        }
+        if (chairsHidden) {
+          chairsHidden.disabled = false;
+          chairsHidden.value = "0";
+        }
+        if (invitationMethodSelect) {
+          invitationMethodSelect.disabled = false; // 確保提交時數據正常帶出
+          invitationMethodSelect.value = "不需要喜帖";
+        }
+      } else {
+        if (guestHidden) {
+          guestHidden.disabled = false;
+          guestHidden.value = (guestSelect && guestSelect.value && guestSelect.value !== '0位') ? guestSelect.value : "1位";
+        }
+        const dietSelect = document.getElementById('dietSelect');
+        if (dietHidden) {
+          dietHidden.disabled = false;
+          dietHidden.value = (dietSelect && dietSelect.value) ? dietSelect.value : "0";
+        }
+        
+        const chairsSelect = document.getElementById('chairsSelect');
+        if (chairsHidden) {
+          chairsHidden.disabled = false;
+          chairsHidden.value = (chairsSelect && chairsSelect.value) ? chairsSelect.value : "0";
+        }
       }
 
-      const dietSelect = document.getElementById('dietSelect');
-      const dietHidden = document.getElementById('dietHidden');
-      dietHidden.value = dietSelect.value || "0";
-
-      const chairsSelect = document.getElementById('chairsSelect');
-      const chairsHidden = document.getElementById('chairsHidden');
-      chairsHidden.value = chairsSelect.value || "0";
+      if (invitationMethodSelect && emailInput && addressInput) {
+        const val = invitationMethodSelect.value;
+        if (!val.includes('電子喜帖')) {
+          emailInput.disabled = false;
+          emailInput.value = "no_email@wedding.com";
+        }
+        if (!val.includes('紙本喜帖')) {
+          addressInput.disabled = false;
+          addressInput.value = "不需要郵寄地址";
+        }
+      }
     }
 
     function showSubmittingState() {
       const btn = document.getElementById('submitBtn');
+      if (!btn) return;
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> 正在傳送中...`;
     }
@@ -878,37 +967,40 @@
       const modalCard = document.getElementById('modalCard');
       const btn = document.getElementById('submitBtn');
 
-      btn.disabled = false;
-      btn.innerHTML = `<span>送出回函 CONFIRM</span>`;
+      submitted = false;
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = `<span>送出回函 CONFIRM</span>`;
+      }
 
-      document.getElementById('weddingForm').reset();
+      const form = document.getElementById('weddingForm');
+      if (form) form.reset();
+
       handleGuestCountChange();
       handleChairsChange();
       handleInvitationMethodChange();
 
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        modalCard.classList.remove('scale-95');
-      }, 10);
+      if (modal && modalCard) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modalCard.classList.remove('scale-95');
+        }, 10);
+      }
     }
 
     function closeSuccessModal() {
       const modal = document.getElementById('successModal');
       const modalCard = document.getElementById('modalCard');
       
-      modal.classList.add('opacity-0');
-      modalCard.classList.add('scale-95');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        submitted = false;
-      }, 300);
+      if (modal && modalCard) {
+        modal.classList.add('opacity-0');
+        modalCard.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 300);
+      }
     }
   </script>
-
-  <footer class="py-8 bg-morandi-dark text-white/70 text-center text-xs tracking-widest border-t border-white/10">
-    <p class="font-cormorant text-sm text-morandi-goldLight mb-1">YANG & CHONG WEDDING 2027</p>
-    <p>© 2027 楊承餘 & 鍾禹彤. All Rights Reserved.</p>
-  </footer>
 </body>
 </html>

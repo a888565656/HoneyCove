@@ -276,7 +276,7 @@
             <p class="text-sm text-morandi-muted mt-1">中午 12:00 入席（11:30 開始迎賓）</p>
           </div>
           <!-- Google 行事曆按鈕 -->
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E2%9D%A4%EF%B8%8F+%E6%A5%8A%E6%89%BF%E9%A4%98+%26+%E9%8D%80%E7%9A%B9%E5%BD%A4+%E5%A9%9A%E7%A6%AE%E5%AE%B4%E5%AE%A2&dates=20270227T040000Z/20270227T070000Z&details=%E8%AA%A0%E6%8C%9A%E9%82%80%E8%AB%8B%E6%82%A8%E5%85%B1%E5%90%8C%E8%A6%8B%E8%AD%89%E6%A5%8A%E6%89%BF%E9%A4%98%E8%88%87%E9%8D%80%E7%9A%B9%E5%BD%A4%E7%9A%84%E5%B9%B8%E7%A6%8F%E6%99%82%E5%88%BB%EF%BC%81&location=406+%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E8%8A%B3%E5%BA%AD%E8%B7%AF1%E8%99%9F" 
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E2%9D%A4%EF%B8%8F+%E6%A5%8A%E6%89%BF%E9%A4%98+%26+%E9%8D%BE%E7%A6%B9%E5%BD%A4+%E5%A9%9A%E7%A6%AE%E5%AE%B4%E5%AE%A2&dates=20270227T040000Z/20270227T070000Z&details=%E8%AA%A0%E6%8C%9A%E9%82%80%E8%AB%8B%E6%82%A8%E5%85%B1%E5%90%8C%E8%A6%8B%E8%AD%89%E6%A5%8A%E6%89%BF%E9%A4%98%E8%88%87%E9%8D%BE%E7%A6%B9%E5%BD%A4%E7%9A%84%E5%B9%B8%E7%A6%8F%E6%99%82%E5%88%BB%EF%BC%81&location=406+%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E8%8A%B3%E5%BA%AD%E8%B7%AF1%E8%99%9F" 
              target="_blank" 
              class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-full bg-morandi-gold/10 text-morandi-gold hover:bg-morandi-gold hover:text-white transition duration-300 text-xs sm:text-sm font-medium shrink-0 mt-2 sm:mt-0">
             <i class="fa-regular fa-calendar-plus"></i>
@@ -303,7 +303,7 @@
               <i class="fa-regular fa-copy"></i>
               <span>複製地址</span>
             </button>
-            <a href="https://www.google.com/maps/place/%E8%8A%B3%E5%BA%AD%E8%B7%AF%E5%A3%B9%E8%99%9F%E8%8E%8A%E5%9C%92/@24.1667165,120.717423,13.24z/data=!4m10!1m2!2m1!1z6Iqz5am36Lev5LiA6Jmf6Iqx5ZyS!3m6!1s0x346919b35736d23b:0xd70d037d303e93e9!8m2!3d24.162262!4d120.7677143!15sChXoirPlqbfot6_kuIDomZ_oirHlnJJaHCIa6IqzIOWptyDot68g5LiAIOiZnyDoirHlnJKSAQxiYW5xdWV0X2hhbGzgAQA!16s%2Fg%2F11xdyqk785?entry=ttu&g_ep=EgoyMDI2MDgwMy4wIKXMDSoASAFQAw%3D%3D" 
+            <a href="https://www.google.com/maps/place/%E8%8A%B3%E5%BA%AD%E8%B7%AF%E5%A3%B9%E8%99%9F%E8%8E%8A%E5%9C%92/@24.1622669,120.7651394,17z/data=!3m1!4b1!4m6!3m5!1s0x346919b35736d23b:0xd70d037d303e93e9!8m2!3d24.162262!4d120.7677143!16s%2Fg%2F11xdyqk785?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" 
                class="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-full bg-morandi-gold/10 text-morandi-gold hover:bg-morandi-gold hover:text-white transition duration-300 text-xs sm:text-sm font-medium">
               <span>開啟地圖</span>
@@ -378,6 +378,19 @@
       <h2 class="text-2xl sm:text-3xl font-semibold text-morandi-dark tracking-wide">出席回函</h2>
       <p class="text-xs text-morandi-muted mt-2">為利宴席統計，請於 2027 年 1 月 15 日前填寫完畢</p>
       <div class="w-12 h-[2px] bg-morandi-gold mx-auto mt-3"></div>
+    </div>
+
+    <!-- 已填寫過的提示與修改回應按鈕區塊 -->
+    <div id="previousSubmissionBanner" class="hidden mb-6 p-4.5 rounded-2xl bg-amber-50/90 border border-morandi-goldLight/60 text-center shadow-sm">
+      <div class="flex items-center justify-center gap-2 text-morandi-dark font-medium text-sm mb-1">
+        <i class="fa-solid fa-circle-check text-morandi-gold"></i>
+        <span>您已於 <span id="submittedTimeText" class="font-bold text-morandi-gold"></span> 填寫過回函</span>
+      </div>
+      <p class="text-xs text-morandi-muted mb-3 leading-relaxed">需要變更出席人數、素食需求或喜帖地址嗎？可點擊下方按鈕載入先前填寫的資料進行修改：</p>
+      <button type="button" onclick="fillFormFromLocalStorage()" class="px-5 py-2.5 rounded-full bg-morandi-gold text-white text-xs font-medium tracking-wider hover:bg-morandi-dark transition duration-300 shadow-sm flex items-center justify-center gap-2 mx-auto">
+        <i class="fa-solid fa-pen-to-square"></i>
+        <span>載入舊資料以修改回應</span>
+      </button>
     </div>
 
     <!-- 隱藏 Iframe 實現零頁面跳轉提交 -->
@@ -606,74 +619,37 @@
   </footer>
 
   <script>
-    function copyAddress() {
-      const addressText = "406 台中市北屯區芳庭路1號";
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(addressText).then(showToast).catch(() => fallbackCopy(addressText));
-      } else {
-        fallbackCopy(addressText);
-      }
-    }
-
-    function fallbackCopy(text) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      showToast();
-    }
-
-    function showToast() {
-      const toast = document.getElementById('toast');
-      if (!toast) return;
-      toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.remove('opacity-0'), 10);
-      setTimeout(() => {
-        toast.classList.add('opacity-0');
-        setTimeout(() => toast.classList.add('hidden'), 300);
-      }, 3000);
-    }
-
+    // 倒數計時器邏輯
     function updateCountdown() {
-      const targetDate = new Date('2027-02-27T12:00:00+08:00').getTime();
+      const weddingDate = new Date('2027-02-27T12:00:00').getTime();
       const now = new Date().getTime();
-      const diff = targetDate - now;
+      const distance = weddingDate - now;
 
-      const daysEl = document.getElementById('days');
-      const hoursEl = document.getElementById('hours');
-      const minEl = document.getElementById('minutes');
-      const secEl = document.getElementById('seconds');
-
-      if (!daysEl || !hoursEl || !minEl || !secEl) return;
-
-      if (diff <= 0) {
-        daysEl.innerText = '00';
-        hoursEl.innerText = '00';
-        minEl.innerText = '00';
-        secEl.innerText = '00';
+      if (distance < 0) {
+        document.getElementById('days').innerText = '00';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      daysEl.innerText = String(days).padStart(2, '0');
-      hoursEl.innerText = String(hours).padStart(2, '0');
-      minEl.innerText = String(minutes).padStart(2, '0');
-      secEl.innerText = String(seconds).padStart(2, '0');
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
+    // 手風琴交通資訊展開/收合
     function toggleAccordion(id) {
       const content = document.getElementById(id);
       const icon = document.getElementById('icon-' + id);
       if (!content) return;
+      
       if (content.classList.contains('hidden')) {
         content.classList.remove('hidden');
         if (icon) icon.classList.add('rotate-180');
@@ -683,151 +659,32 @@
       }
     }
 
-    function getNumericGuestCount() {
-      const guestSelect = document.getElementById('guestCountSelect');
-      if (!guestSelect) return 0;
-      const selectedValue = guestSelect.value;
-
-      if (!selectedValue) return 0;
-      const match = selectedValue.match(/\d+/);
-      return match ? parseInt(match[0], 10) : 0;
+    // 複製地址
+    function copyAddress() {
+      const addressText = document.getElementById('venueAddress')?.innerText || "406 台中市北屯區芳庭路1號";
+      const tempInput = document.createElement('input');
+      tempInput.value = addressText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToastMsg('地址已成功複製！');
     }
 
-    function updateDietOptions(count) {
-      const select = document.getElementById('dietSelect');
-      const hidden = document.getElementById('dietHidden');
-      if (!select) return;
-
-      const currentValue = select.value;
-
-      select.innerHTML = '';
-      
-      const opt0 = document.createElement('option');
-      opt0.value = '0';
-      opt0.textContent = '全葷食 (0位素食)';
-      select.appendChild(opt0);
-
-      for (let i = 1; i <= count; i++) {
-        const opt = document.createElement('option');
-        opt.value = String(i);
-        opt.textContent = (i === count && count > 1) ? `${i}位素食 (全素)` : `${i}位素食`;
-        select.appendChild(opt);
-      }
-
-      const match = Array.from(select.options).find(o => o.value === currentValue);
-      if (match) {
-        select.value = currentValue;
-      } else {
-        select.value = '0';
-      }
-      if (hidden) hidden.value = select.value;
-    }
-
-    function handleGuestCountChange() {
-      const guestSelect = document.getElementById('guestCountSelect');
-      const guestHidden = document.getElementById('guestCountHidden');
-      const dynamicBlock = document.getElementById('dynamicDietAndChairBlock');
-      
-      if (!guestSelect) return;
-      const selectedValue = guestSelect.value;
-
-      if (guestHidden) guestHidden.value = selectedValue || "1位";
-
-      const numCount = getNumericGuestCount();
-      if (dynamicBlock) {
-        if (numCount > 0) {
-          dynamicBlock.classList.remove('hidden');
-        } else {
-          dynamicBlock.classList.add('hidden');
-        }
-      }
-
-      updateDietOptions(numCount);
-    }
-
-    function handleDietChange() {
-      const select = document.getElementById('dietSelect');
-      const hidden = document.getElementById('dietHidden');
-      if (select && hidden) hidden.value = select.value;
-    }
-
-    function handleChairsChange() {
-      const select = document.getElementById('chairsSelect');
-      const hidden = document.getElementById('chairsHidden');
-      if (select && hidden) hidden.value = select.value;
-    }
-
-    function handleInvitationMethodChange() {
-      const methodSelect = document.getElementById('invitationMethodSelect');
-      const emailContainer = document.getElementById('emailContainer');
-      const emailInput = document.getElementById('emailInput');
-      const emailStar = document.getElementById('emailRequiredStar');
-
-      const addressContainer = document.getElementById('addressContainer');
-      const addressInput = document.getElementById('addressInput');
-      const addressStar = document.getElementById('addressRequiredStar');
-
-      if (!methodSelect || !emailInput || !addressInput) return;
-
-      const val = methodSelect.value;
-
-      const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80";
-      const inactiveClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 opacity-60";
-
-      const activeContainerClass = "p-2.5 -mx-2.5 rounded-xl border-2 border-morandi-gold bg-amber-50/60 shadow-sm transition-all duration-300";
-      const inactiveContainerClass = "p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300";
-
-      if (val.includes('電子喜帖')) {
-        emailInput.required = true;
-        emailInput.disabled = false;
-        emailInput.className = activeClass;
-        emailInput.placeholder = "example@gmail.com";
-        if (emailStar) emailStar.classList.remove('hidden');
-        if (emailContainer) emailContainer.className = activeContainerClass;
-        
-        addressInput.required = false;
-        addressInput.disabled = true;
-        addressInput.value = '';
-        addressInput.className = inactiveClass;
-        addressInput.placeholder = "不需要填寫郵寄地址";
-        if (addressStar) addressStar.classList.add('hidden');
-        if (addressContainer) addressContainer.className = inactiveContainerClass;
-      } 
-      else if (val.includes('紙本喜帖')) {
-        addressInput.required = true;
-        addressInput.disabled = false;
-        addressInput.className = activeClass;
-        addressInput.placeholder = "請輸入郵遞區號與完整地址";
-        if (addressStar) addressStar.classList.remove('hidden');
-        if (addressContainer) addressContainer.className = activeContainerClass;
-
-        emailInput.required = false;
-        emailInput.disabled = true;
-        emailInput.value = '';
-        emailInput.className = inactiveClass;
-        emailInput.placeholder = "不需要填寫電子郵件";
-        if (emailStar) emailStar.classList.add('hidden');
-        if (emailContainer) emailContainer.className = inactiveContainerClass;
-      } 
-      else {
-        emailInput.required = false;
-        emailInput.disabled = true;
-        emailInput.value = '';
-        emailInput.className = inactiveClass;
-        emailInput.placeholder = "不需要喜帖";
-        if (emailStar) emailStar.classList.add('hidden');
-        if (emailContainer) emailContainer.className = inactiveContainerClass;
-
-        addressInput.required = false;
-        addressInput.disabled = true;
-        addressInput.value = '';
-        addressInput.className = inactiveClass;
-        addressInput.placeholder = "不需要喜帖";
-        if (addressStar) addressStar.classList.add('hidden');
-        if (addressContainer) addressContainer.className = inactiveContainerClass;
+    // 關閉成功彈窗
+    function closeSuccessModal() {
+      const modal = document.getElementById('successModal');
+      const modalCard = document.getElementById('modalCard');
+      if (modal && modalCard) {
+        modal.classList.add('opacity-0');
+        modalCard.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 300);
       }
     }
 
+    // 出席意願連動處理
     function handleAttendanceChange() {
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
@@ -843,7 +700,6 @@
       const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm appearance-none bg-slate-100 opacity-60 cursor-not-allowed";
 
       if (attendanceSelect.value === '遺憾無法前往...') {
-        // 顯示 0 位選項並鎖定為 0 位
         if (zeroOption) {
           zeroOption.hidden = false;
           zeroOption.style.display = '';
@@ -855,24 +711,20 @@
         if (guestHidden) guestHidden.value = '0位';
         if (guestStar) guestStar.classList.add('hidden');
 
-        // 關閉並禁用「喜帖領取方式」，預設帶入「不需要喜帖」
         invitationSelect.value = '不需要喜帖';
         invitationSelect.required = false;
         invitationSelect.disabled = true;
         invitationSelect.className = disabledClass;
         if (invitationStar) invitationStar.classList.add('hidden');
 
-        // 更新連動子欄位（隱藏素食/兒童椅、清空並關閉 Email 與地址）
         handleGuestCountChange();
         handleInvitationMethodChange();
       } else if (attendanceSelect.value === '當然，一定到!') {
-        // 隱藏 0 位選項
         if (zeroOption) {
           zeroOption.hidden = true;
           zeroOption.style.display = 'none';
         }
 
-        // 開啟「參加午宴人數」
         guestSelect.disabled = false;
         guestSelect.required = true;
         guestSelect.className = activeClass;
@@ -882,7 +734,6 @@
         if (guestHidden) guestHidden.value = guestSelect.value;
         if (guestStar) guestStar.classList.remove('hidden');
 
-        // 開啟「喜帖領取方式」
         invitationSelect.disabled = false;
         invitationSelect.required = true;
         invitationSelect.className = activeClass;
@@ -891,13 +742,259 @@
         }
         if (invitationStar) invitationStar.classList.remove('hidden');
 
-        // 更新連動子欄位
         handleGuestCountChange();
         handleInvitationMethodChange();
       }
     }
 
+    // 人數選擇連動更新素食選單
+    function handleGuestCountChange() {
+      const guestSelect = document.getElementById('guestCountSelect');
+      const dynamicBlock = document.getElementById('dynamicDietAndChairBlock');
+      const dietSelect = document.getElementById('dietSelect');
+      const guestHidden = document.getElementById('guestCountHidden');
+
+      if (!guestSelect) return;
+
+      const totalVal = parseInt(guestSelect.value, 10) || 0;
+      if (guestHidden) guestHidden.value = guestSelect.value || '1位';
+
+      if (totalVal > 0) {
+        if (dynamicBlock) dynamicBlock.classList.remove('hidden');
+
+        if (dietSelect) {
+          const currentDiet = parseInt(dietSelect.value, 10) || 0;
+          dietSelect.innerHTML = '';
+          const optAllMeat = document.createElement('option');
+          optAllMeat.value = '0';
+          optAllMeat.textContent = '全葷食 (0位素食)';
+          dietSelect.appendChild(optAllMeat);
+
+          for (let i = 1; i <= totalVal; i++) {
+            const opt = document.createElement('option');
+            opt.value = i.toString();
+            opt.textContent = `${i} 位素食 (${totalVal - i}位葷食)`;
+            dietSelect.appendChild(opt);
+          }
+
+          if (currentDiet <= totalVal) {
+            dietSelect.value = currentDiet.toString();
+          } else {
+            dietSelect.value = '0';
+          }
+          handleDietChange();
+        }
+      } else {
+        if (dynamicBlock) dynamicBlock.classList.add('hidden');
+        if (dietSelect) dietSelect.value = '0';
+        handleDietChange();
+      }
+    }
+
+    function handleDietChange() {
+      const dietSelect = document.getElementById('dietSelect');
+      const dietHidden = document.getElementById('dietHidden');
+      if (dietSelect && dietHidden) {
+        dietHidden.value = dietSelect.value || '0';
+      }
+    }
+
+    function handleChairsChange() {
+      const chairsSelect = document.getElementById('chairsSelect');
+      const chairsHidden = document.getElementById('chairsHidden');
+      if (chairsSelect && chairsHidden) {
+        chairsHidden.value = chairsSelect.value || '0';
+      }
+    }
+
+    // 喜帖領取方式連動 Email 與 地址
+    function handleInvitationMethodChange() {
+      const methodSelect = document.getElementById('invitationMethodSelect');
+      const emailContainer = document.getElementById('emailContainer');
+      const emailInput = document.getElementById('emailInput');
+      const emailStar = document.getElementById('emailRequiredStar');
+
+      const addressContainer = document.getElementById('addressContainer');
+      const addressInput = document.getElementById('addressInput');
+      const addressStar = document.getElementById('addressRequiredStar');
+
+      if (!methodSelect || !emailInput || !addressInput) return;
+
+      const val = methodSelect.value;
+      const activeInputClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80";
+      const disabledInputClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm bg-slate-100 opacity-60 cursor-not-allowed";
+
+      if (val.includes('電子喜帖')) {
+        emailInput.disabled = false;
+        emailInput.required = true;
+        emailInput.className = activeInputClass;
+        emailInput.placeholder = "請輸入您的 Email 地址";
+        if (emailInput.value === "no_email@wedding.com") emailInput.value = "";
+        if (emailStar) emailStar.classList.remove('hidden');
+        if (emailContainer) emailContainer.className = "p-2.5 -mx-2.5 rounded-xl border border-morandi-gold/30 bg-morandi-gold/5 transition-all duration-300";
+
+        addressInput.disabled = true;
+        addressInput.required = false;
+        addressInput.className = disabledInputClass;
+        addressInput.placeholder = "選擇寄送紙本喜帖時開啟";
+        if (addressStar) addressStar.classList.add('hidden');
+        if (addressContainer) addressContainer.className = "p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300";
+      } else if (val.includes('紙本喜帖')) {
+        addressInput.disabled = false;
+        addressInput.required = true;
+        addressInput.className = activeInputClass;
+        addressInput.placeholder = "請輸入完整郵寄地址與收件人名稱";
+        if (addressInput.value === "不需要郵寄地址") addressInput.value = "";
+        if (addressStar) addressStar.classList.remove('hidden');
+        if (addressContainer) addressContainer.className = "p-2.5 -mx-2.5 rounded-xl border border-morandi-gold/30 bg-morandi-gold/5 transition-all duration-300";
+
+        emailInput.disabled = true;
+        emailInput.required = false;
+        emailInput.className = disabledInputClass;
+        emailInput.placeholder = "選擇寄送電子喜帖時開啟";
+        if (emailStar) emailStar.classList.add('hidden');
+        if (emailContainer) emailContainer.className = "p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300";
+      } else {
+        emailInput.disabled = true;
+        emailInput.required = false;
+        emailInput.className = disabledInputClass;
+        emailInput.placeholder = "請先選擇喜帖領取方式";
+        if (emailStar) emailStar.classList.add('hidden');
+        if (emailContainer) emailContainer.className = "p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300";
+
+        addressInput.disabled = true;
+        addressInput.required = false;
+        addressInput.className = disabledInputClass;
+        addressInput.placeholder = "請先選擇喜帖領取方式";
+        if (addressStar) addressStar.classList.add('hidden');
+        if (addressContainer) addressContainer.className = "p-2.5 -mx-2.5 rounded-xl border border-transparent transition-all duration-300";
+      }
+    }
+
+    const LOCAL_STORAGE_KEY = 'wedding_rsvp_submitted_data';
+
+    function saveFormDataToLocalStorage() {
+      const form = document.getElementById('weddingForm');
+      if (!form) return;
+
+      const data = {
+        name: form.querySelector('input[name="entry.2047345391"]')?.value || '',
+        phone: form.querySelector('input[name="entry.1766251007"]')?.value || '',
+        relationship: form.querySelector('select[name="entry.1339287923"]')?.value || '',
+        attendance: document.getElementById('attendanceSelect')?.value || '',
+        guestCount: document.getElementById('guestCountSelect')?.value || '',
+        diet: document.getElementById('dietSelect')?.value || '0',
+        chairs: document.getElementById('chairsSelect')?.value || '0',
+        invitationMethod: document.getElementById('invitationMethodSelect')?.value || '',
+        email: document.getElementById('emailInput')?.value || '',
+        address: document.getElementById('addressInput')?.value || '',
+        blessings: form.querySelector('textarea[name="entry.1716942766"]')?.value || '',
+        specialRequests: form.querySelector('textarea[name="entry.1777039153"]')?.value || '',
+        submittedAt: new Date().toLocaleString('zh-TW', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+      };
+
+      try {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn('LocalStorage save failed:', e);
+      }
+    }
+
+    function checkPreviousSubmission() {
+      try {
+        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (saved) {
+          const data = JSON.parse(saved);
+          const banner = document.getElementById('previousSubmissionBanner');
+          const timeText = document.getElementById('submittedTimeText');
+          if (banner && timeText) {
+            timeText.textContent = data.submittedAt || '先前';
+            banner.classList.remove('hidden');
+          }
+        }
+      } catch (e) {
+        console.warn('LocalStorage load failed:', e);
+      }
+    }
+
+    function fillFormFromLocalStorage() {
+      try {
+        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        const form = document.getElementById('weddingForm');
+        if (!form) return;
+
+        if (data.name) form.querySelector('input[name="entry.2047345391"]').value = data.name;
+        if (data.phone) form.querySelector('input[name="entry.1766251007"]').value = data.phone;
+        if (data.relationship) form.querySelector('select[name="entry.1339287923"]').value = data.relationship;
+
+        const attendanceSelect = document.getElementById('attendanceSelect');
+        if (attendanceSelect && data.attendance) {
+          attendanceSelect.value = data.attendance;
+          handleAttendanceChange();
+        }
+
+        const guestSelect = document.getElementById('guestCountSelect');
+        if (guestSelect && data.guestCount) {
+          guestSelect.value = data.guestCount;
+          handleGuestCountChange();
+        }
+
+        const dietSelect = document.getElementById('dietSelect');
+        if (dietSelect && data.diet) {
+          dietSelect.value = data.diet;
+          handleDietChange();
+        }
+
+        const chairsSelect = document.getElementById('chairsSelect');
+        if (chairsSelect && data.chairs) {
+          chairsSelect.value = data.chairs;
+          handleChairsChange();
+        }
+
+        const invitationSelect = document.getElementById('invitationMethodSelect');
+        if (invitationSelect && data.invitationMethod) {
+          invitationSelect.value = data.invitationMethod;
+          handleInvitationMethodChange();
+        }
+
+        if (data.email && !document.getElementById('emailInput').disabled) {
+          document.getElementById('emailInput').value = (data.email === "no_email@wedding.com") ? "" : data.email;
+        }
+        if (data.address && !document.getElementById('addressInput').disabled) {
+          document.getElementById('addressInput').value = (data.address === "不需要郵寄地址") ? "" : data.address;
+        }
+
+        if (data.blessings) form.querySelector('textarea[name="entry.1716942766"]').value = data.blessings;
+        if (data.specialRequests) form.querySelector('textarea[name="entry.1777039153"]').value = data.specialRequests;
+
+        showToastMsg('已成功載入先前填寫的資料，修改後請點擊送出');
+      } catch (e) {
+        console.warn('Form prefill failed:', e);
+      }
+    }
+
+    function showToastMsg(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.remove('opacity-0'), 10);
+      setTimeout(() => {
+        toast.classList.add('opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 3500);
+    }
+
+    function showToast() {
+      showToastMsg('地址已成功複製！');
+    }
+
     function prepareBeforeSubmit() {
+      saveFormDataToLocalStorage();
+
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
       const guestHidden = document.getElementById('guestCountHidden');
@@ -921,7 +1018,7 @@
           chairsHidden.value = "0";
         }
         if (invitationMethodSelect) {
-          invitationMethodSelect.disabled = false; // 確保提交時數據正常帶出
+          invitationMethodSelect.disabled = false;
           invitationMethodSelect.value = "不需要喜帖";
         }
       } else {
@@ -980,6 +1077,8 @@
       handleChairsChange();
       handleInvitationMethodChange();
 
+      checkPreviousSubmission();
+
       if (modal && modalCard) {
         modal.classList.remove('hidden');
         setTimeout(() => {
@@ -989,18 +1088,11 @@
       }
     }
 
-    function closeSuccessModal() {
-      const modal = document.getElementById('successModal');
-      const modalCard = document.getElementById('modalCard');
-      
-      if (modal && modalCard) {
-        modal.classList.add('opacity-0');
-        modalCard.classList.add('scale-95');
-        setTimeout(() => {
-          modal.classList.add('hidden');
-        }, 300);
-      }
-    }
+    window.addEventListener('DOMContentLoaded', () => {
+      checkPreviousSubmission();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
   </script>
 </body>
 </html>

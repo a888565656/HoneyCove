@@ -331,7 +331,7 @@
               </p>
               <p class="flex items-start gap-2 justify-center sm:justify-start">
                 <i class="fa-solid fa-pen-to-square text-morandi-gold mt-1 text-xs shrink-0"></i>
-                <span>送出回覆後在表單關閉前，您皆可隨時透過此連結進行資料修改。</span>
+                <span>如送出後需要修改，請重新填寫一份新的並於下方備註回覆標註即可。</span>
               </p>
             </div>
           </div>
@@ -382,19 +382,6 @@
       <h2 class="text-2xl sm:text-3xl font-semibold text-morandi-dark tracking-wide">出席回函</h2>
       <p class="text-xs text-morandi-muted mt-2">為利宴席統計，請於 2026 年 12 月 31 日前填寫完畢</p>
       <div class="w-12 h-[2px] bg-morandi-gold mx-auto mt-3"></div>
-    </div>
-
-    <!-- 已填寫過的提示與修改回應按鈕區塊 -->
-    <div id="previousSubmissionBanner" class="hidden mb-6 p-4.5 rounded-2xl bg-amber-50/90 border border-morandi-goldLight/60 text-center shadow-sm">
-      <div class="flex items-center justify-center gap-2 text-morandi-dark font-medium text-sm mb-1">
-        <i class="fa-solid fa-circle-check text-morandi-gold"></i>
-        <span>您已於 <span id="submittedTimeText" class="font-bold text-morandi-gold"></span> 填寫過回函</span>
-      </div>
-      <p class="text-xs text-morandi-muted mb-3 leading-relaxed">需要變更出席人數、素食需求或喜帖地址嗎？可點擊下方按鈕載入先前填寫的資料進行修改：</p>
-      <button type="button" onclick="fillFormFromLocalStorage()" class="px-5 py-2.5 rounded-full bg-morandi-gold text-white text-xs font-medium tracking-wider hover:bg-morandi-dark transition duration-300 shadow-sm flex items-center justify-center gap-2 mx-auto">
-        <i class="fa-solid fa-pen-to-square"></i>
-        <span>載入舊資料以修改回應</span>
-      </button>
     </div>
 
     <!-- 隱藏 Iframe 實現零頁面跳轉提交 -->
@@ -889,110 +876,6 @@
       }
     }
 
-    const LOCAL_STORAGE_KEY = 'wedding_rsvp_submitted_data';
-
-    function saveFormDataToLocalStorage() {
-      const form = document.getElementById('weddingForm');
-      if (!form) return;
-
-      const data = {
-        name: form.querySelector('input[name="entry.2047345391"]')?.value || '',
-        phone: form.querySelector('input[name="entry.1766251007"]')?.value || '',
-        relationship: form.querySelector('select[name="entry.1339287923"]')?.value || '',
-        attendance: document.getElementById('attendanceSelect')?.value || '',
-        guestCount: document.getElementById('guestCountSelect')?.value || '',
-        diet: document.getElementById('dietSelect')?.value || '0',
-        chairs: document.getElementById('chairsSelect')?.value || '0',
-        invitationMethod: document.getElementById('invitationMethodSelect')?.value || '',
-        email: document.getElementById('emailInput')?.value || '',
-        address: document.getElementById('addressInput')?.value || '',
-        blessings: form.querySelector('textarea[name="entry.1716942766"]')?.value || '',
-        specialRequests: form.querySelector('textarea[name="entry.1777039153"]')?.value || '',
-        submittedAt: new Date().toLocaleString('zh-TW', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })
-      };
-
-      try {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-      } catch (e) {
-        console.warn('LocalStorage save failed:', e);
-      }
-    }
-
-    function checkPreviousSubmission() {
-      try {
-        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (saved) {
-          const data = JSON.parse(saved);
-          const banner = document.getElementById('previousSubmissionBanner');
-          const timeText = document.getElementById('submittedTimeText');
-          if (banner && timeText) {
-            timeText.textContent = data.submittedAt || '先前';
-            banner.classList.remove('hidden');
-          }
-        }
-      } catch (e) {
-        console.warn('LocalStorage load failed:', e);
-      }
-    }
-
-    function fillFormFromLocalStorage() {
-      try {
-        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (!saved) return;
-        const data = JSON.parse(saved);
-        const form = document.getElementById('weddingForm');
-        if (!form) return;
-
-        if (data.name) form.querySelector('input[name="entry.2047345391"]').value = data.name;
-        if (data.phone) form.querySelector('input[name="entry.1766251007"]').value = data.phone;
-        if (data.relationship) form.querySelector('select[name="entry.1339287923"]').value = data.relationship;
-
-        const attendanceSelect = document.getElementById('attendanceSelect');
-        if (attendanceSelect && data.attendance) {
-          attendanceSelect.value = data.attendance;
-          handleAttendanceChange();
-        }
-
-        const guestSelect = document.getElementById('guestCountSelect');
-        if (guestSelect && data.guestCount) {
-          guestSelect.value = data.guestCount;
-          handleGuestCountChange();
-        }
-
-        const dietSelect = document.getElementById('dietSelect');
-        if (dietSelect && data.diet) {
-          dietSelect.value = data.diet;
-          handleDietChange();
-        }
-
-        const chairsSelect = document.getElementById('chairsSelect');
-        if (chairsSelect && data.chairs) {
-          chairsSelect.value = data.chairs;
-          handleChairsChange();
-        }
-
-        const invitationSelect = document.getElementById('invitationMethodSelect');
-        if (invitationSelect && data.invitationMethod) {
-          invitationSelect.value = data.invitationMethod;
-          handleInvitationMethodChange();
-        }
-
-        if (data.email && !document.getElementById('emailInput').disabled) {
-          document.getElementById('emailInput').value = (data.email === "no_email@wedding.com") ? "" : data.email;
-        }
-        if (data.address && !document.getElementById('addressInput').disabled) {
-          document.getElementById('addressInput').value = (data.address === "不需要郵寄地址") ? "" : data.address;
-        }
-
-        if (data.blessings) form.querySelector('textarea[name="entry.1716942766"]').value = data.blessings;
-        if (data.specialRequests) form.querySelector('textarea[name="entry.1777039153"]').value = data.specialRequests;
-
-        showToastMsg('已成功載入先前填寫的資料，修改後請點擊送出');
-      } catch (e) {
-        console.warn('Form prefill failed:', e);
-      }
-    }
-
     function showToastMsg(msg) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toastMsg');
@@ -1011,8 +894,6 @@
     }
 
     function prepareBeforeSubmit() {
-      saveFormDataToLocalStorage();
-
       const attendanceSelect = document.getElementById('attendanceSelect');
       const guestSelect = document.getElementById('guestCountSelect');
       const guestHidden = document.getElementById('guestCountHidden');
@@ -1094,8 +975,6 @@
       handleChairsChange();
       handleInvitationMethodChange();
 
-      checkPreviousSubmission();
-
       if (modal && modalCard) {
         modal.classList.remove('hidden');
         setTimeout(() => {
@@ -1106,7 +985,6 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      checkPreviousSubmission();
       updateCountdown();
       setInterval(updateCountdown, 1000);
     });

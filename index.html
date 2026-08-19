@@ -330,8 +330,8 @@
                 <span>車輛無法直接駛至會場門口，請先將愛車停放於專屬停車場後，再步行漫步進入莊園。</span>
               </p>
               <p class="flex items-start gap-2 justify-center sm:justify-start">
-                <i class="fa-solid fa-square-parking text-morandi-gold mt-1 text-xs shrink-0"></i>
-                <span>表單可以修改回覆，在表單關閉前都可以調整！</span>
+                <i class="fa-solid fa-pen-to-square text-morandi-gold mt-1 text-xs shrink-0"></i>
+                <span>送出回覆後在表單關閉前，您皆可隨時透過此連結進行資料修改。</span>
               </p>
             </div>
           </div>
@@ -419,15 +419,15 @@
                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80">
       </div>
 
-      <!-- 聯絡電話 PHONE -->
+      <!-- 聯絡資訊 CONTACT -->
       <div>
         <label class="block text-xs font-bold text-morandi-dark tracking-wider mb-2">
-          聯絡電話 <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">PHONE</span> <span class="text-red-400">*</span>
+          聯絡資訊 <span class="text-[10px] text-morandi-muted font-normal">(電話 / LINE ID / IG 等皆可)</span> <span class="font-cormorant text-morandi-gold font-semibold uppercase ml-1">CONTACT</span> <span class="text-red-400">*</span>
         </label>
-        <input type="tel" 
+        <input type="text" 
                name="entry.1766251007" 
                required 
-               placeholder="請輸入您的手機號碼" 
+               placeholder="請輸入您的電話、LINE ID 或 IG等" 
                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80">
       </div>
 
@@ -531,7 +531,7 @@
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇喜帖領取方式</option>
           <option value="需要，請寄電子喜帖給我">需要，請寄電子喜帖給我</option>
-          <option value="需要，請寄紙本喜帖給我">需要，請寄紙本喜帖給我</option>
+          <option value="需要，請寄紙本喜帖給我" id="paperInvitationOption">需要，請寄紙本喜帖給我</option>
           <option value="不需要喜帖">不需要喜帖</option>
         </select>
       </div>
@@ -697,6 +697,7 @@
       const guestStar = document.getElementById('guestCountRequiredStar');
       const invitationSelect = document.getElementById('invitationMethodSelect');
       const invitationStar = document.getElementById('invitationMethodRequiredStar');
+      const paperOption = document.getElementById('paperInvitationOption');
 
       if (!attendanceSelect || !guestSelect || !invitationSelect) return;
 
@@ -714,13 +715,35 @@
         guestSelect.className = disabledClass;
         if (guestHidden) guestHidden.value = '0位';
         if (guestStar) guestStar.classList.add('hidden');
-      
+
+        // 隱藏紙本喜帖選項，保留「電子喜帖」與「不需要喜帖」可供選擇
+        if (paperOption) {
+          paperOption.hidden = true;
+          paperOption.disabled = true;
+          paperOption.style.display = 'none';
+        }
+        if (invitationSelect.value === '需要，請寄紙本喜帖給我') {
+          invitationSelect.value = '';
+        }
+
+        invitationSelect.disabled = false;
+        invitationSelect.required = true;
+        invitationSelect.className = activeClass;
+        if (invitationStar) invitationStar.classList.remove('hidden');
+
         handleGuestCountChange();
-        handleInvitationMethodChange()；
+        handleInvitationMethodChange();
       } else if (attendanceSelect.value === '當然，一定到!') {
         if (zeroOption) {
           zeroOption.hidden = true;
           zeroOption.style.display = 'none';
+        }
+
+        // 恢復顯示紙本喜帖選項
+        if (paperOption) {
+          paperOption.hidden = false;
+          paperOption.disabled = false;
+          paperOption.style.display = '';
         }
 
         guestSelect.disabled = false;
@@ -735,9 +758,6 @@
         invitationSelect.disabled = false;
         invitationSelect.required = true;
         invitationSelect.className = activeClass;
-        if (invitationSelect.value === '不需要喜帖') {
-          invitationSelect.value = '';
-        }
         if (invitationStar) invitationStar.classList.remove('hidden');
 
         handleGuestCountChange();
@@ -1017,7 +1037,6 @@
         }
         if (invitationMethodSelect) {
           invitationMethodSelect.disabled = false;
-          invitationMethodSelect.value = "不需要喜帖";
         }
       } else {
         if (guestHidden) {

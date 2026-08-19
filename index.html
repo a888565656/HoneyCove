@@ -329,6 +329,10 @@
                 <i class="fa-solid fa-square-parking text-morandi-gold mt-1 text-xs shrink-0"></i>
                 <span>車輛無法直接駛至會場門口，請先將愛車停放於專屬停車場後，再步行漫步進入莊園。</span>
               </p>
+              <p class="flex items-start gap-2 justify-center sm:justify-start">
+                <i class="fa-solid fa-square-parking text-morandi-gold mt-1 text-xs shrink-0"></i>
+                <span>表單可以修改回覆，在表單關閉前都可以調整！</span>
+              </p>
             </div>
           </div>
         </div>
@@ -376,7 +380,7 @@
     <div class="text-center mb-10">
       <span class="font-cormorant text-morandi-gold text-sm tracking-[0.3em] uppercase block mb-1">Attendance Confirmation</span>
       <h2 class="text-2xl sm:text-3xl font-semibold text-morandi-dark tracking-wide">出席回函</h2>
-      <p class="text-xs text-morandi-muted mt-2">為利宴席統計，請於 2027 年 1 月 15 日前填寫完畢</p>
+      <p class="text-xs text-morandi-muted mt-2">為利宴席統計，請於 2026 年 12 月 31 日前填寫完畢</p>
       <div class="w-12 h-[2px] bg-morandi-gold mx-auto mt-3"></div>
     </div>
 
@@ -710,15 +714,9 @@
         guestSelect.className = disabledClass;
         if (guestHidden) guestHidden.value = '0位';
         if (guestStar) guestStar.classList.add('hidden');
-
-        invitationSelect.value = '不需要喜帖';
-        invitationSelect.required = false;
-        invitationSelect.disabled = true;
-        invitationSelect.className = disabledClass;
-        if (invitationStar) invitationStar.classList.add('hidden');
-
+      
         handleGuestCountChange();
-        handleInvitationMethodChange();
+        handleInvitationMethodChange()；
       } else if (attendanceSelect.value === '當然，一定到!') {
         if (zeroOption) {
           zeroOption.hidden = true;

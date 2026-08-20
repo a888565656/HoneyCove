@@ -42,6 +42,13 @@
   </script>
 
   <style>
+    html {
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     body {
       font-family: 'Noto Serif TC', serif;
       background-color: #faf8f5;
@@ -323,11 +330,11 @@
             <div class="mt-2 text-sm text-morandi-muted space-y-2 leading-relaxed">
               <p class="flex items-start gap-2 justify-center sm:justify-start">
                 <i class="fa-solid fa-bugs text-morandi-gold mt-1 text-xs shrink-0"></i>
-                <span>莊園位於山區親近自然環境，蚊蟲較多，建議賓客可準備防蚊用品或穿著防護衣物。</span>
+                <span>莊園位於山區親近自然環境，蚊蟲較多，建議賓客可準備防蚊用品或穿著防蚊衣物。</span>
               </p>
               <p class="flex items-start gap-2 justify-center sm:justify-start">
                 <i class="fa-solid fa-square-parking text-morandi-gold mt-1 text-xs shrink-0"></i>
-                <span>車輛無法直接駛至會場門口，請先將愛車停放於專屬停車場後，再步行漫步進入莊園。</span>
+                <span>車輛無法直接駛至會場門口，請先將愛車停放於專屬停車場後，再步行漫步進入莊園(約三分鐘)。</span>
               </p>
               <p class="flex items-start gap-2 justify-center sm:justify-start">
                 <i class="fa-solid fa-pen-to-square text-morandi-gold mt-1 text-xs shrink-0"></i>
@@ -339,7 +346,6 @@
 
       </div>
 
-      <!-- 交通指引 (預設展開) -->
       <div class="mt-12">
         <h3 class="text-lg font-bold text-morandi-dark mb-4 text-center sm:text-left flex items-center justify-center sm:justify-start">
           <i class="fa-solid fa-car-side text-morandi-gold mr-2"></i> 交通指引與導航
@@ -427,9 +433,9 @@
                 required 
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇關係</option>
-          <option value="承餘的親友">承餘的親友</option>
-          <option value="禹彤的親友">禹彤的親友</option>
-          <option value="共同好友">共同好友</option>
+          <option value="承餘的親友">🤵 承餘的親友</option>
+          <option value="禹彤的親友">👰 禹彤的親友</option>
+          <option value="共同好友">🥂 共同好友</option>
         </select>
       </div>
 
@@ -444,8 +450,8 @@
                 onchange="handleAttendanceChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇出席意願</option>
-          <option value="當然，一定到!">當然，一定到!</option>
-          <option value="遺憾無法前往...">遺憾無法前往...</option>
+          <option value="期待與您相聚">✨ 期待與您相聚</option>
+          <option value="此次無法赴約">💌 此次無法赴約</option>
         </select>
       </div>
 
@@ -474,7 +480,6 @@
         </select>
       </div>
 
-      <!-- 智能表單動態區塊 (當人數 > 0 時展開) -->
       <div id="dynamicDietAndChairBlock" class="hidden space-y-5 pt-4 border-t border-dashed border-morandi-goldLight/40">
         <!-- 飲食需求 DIET -->
         <div>
@@ -517,9 +522,9 @@
                 onchange="handleInvitationMethodChange()"
                 class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80">
           <option value="" disabled selected>請選擇喜帖領取方式</option>
-          <option value="需要，請寄電子喜帖給我">需要，請寄電子喜帖給我</option>
-          <option value="需要，請寄紙本喜帖給我" id="paperInvitationOption">需要，請寄紙本喜帖給我</option>
-          <option value="不需要喜帖">不需要喜帖</option>
+          <option value="請寄電子喜帖給我">📧 請寄電子喜帖給我</option>
+          <option value="請寄紙本喜帖給我" id="paperInvitationOption">📮 請寄紙本喜帖給我</option>
+          <option value="不需要喜帖">🌿 不需要喜帖</option>
         </select>
       </div>
 
@@ -691,7 +696,7 @@
       const activeClass = "w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm appearance-none bg-white/80";
       const disabledClass = "w-full px-4 py-3 rounded-xl border border-slate-200 outline-none transition text-sm appearance-none bg-slate-100 opacity-60 cursor-not-allowed";
 
-      if (attendanceSelect.value === '遺憾無法前往...') {
+      if (attendanceSelect.value === '此次無法赴約') {
         if (zeroOption) {
           zeroOption.hidden = false;
           zeroOption.style.display = '';
@@ -709,7 +714,7 @@
           paperOption.disabled = true;
           paperOption.style.display = 'none';
         }
-        if (invitationSelect.value === '需要，請寄紙本喜帖給我') {
+        if (invitationSelect.value.includes('紙本喜帖')) {
           invitationSelect.value = '';
         }
 
@@ -720,7 +725,7 @@
 
         handleGuestCountChange();
         handleInvitationMethodChange();
-      } else if (attendanceSelect.value === '當然，一定到!') {
+      } else if (attendanceSelect.value === '期待與您相聚') {
         if (zeroOption) {
           zeroOption.hidden = true;
           zeroOption.style.display = 'none';
@@ -903,7 +908,7 @@
       const emailInput = document.getElementById('emailInput');
       const addressInput = document.getElementById('addressInput');
 
-      if (attendanceSelect && attendanceSelect.value === '遺憾無法前往...') {
+      if (attendanceSelect && attendanceSelect.value === '此次無法赴約') {
         if (guestHidden) {
           guestHidden.disabled = false;
           guestHidden.value = "0位";

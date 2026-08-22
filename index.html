@@ -1504,12 +1504,12 @@
             請選擇出席意願
           </option>
 
-          <option value="期待與您相聚">
-            ✨ 期待與您相聚
+          <option value="我確定可以參加!">
+            ✨ 我可以參加!
           </option>
 
-          <option value="此次無法赴約">
-            💌 此次無法赴約
+          <option value="可惜有事無法參加">
+            💌 可惜有事無法參加
           </option>
 
         </select>
@@ -1819,7 +1819,7 @@
         <textarea
           name="entry.1777039153"
           rows="3"
-          placeholder="如有無障礙需求、食物過敏或其它想告知新人的事宜，請在此註明..."
+          placeholder="如有食物過敏、輪椅推車或育嬰室等當日需求，或其它告知事宜，請在此註明..."
           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none transition text-sm bg-white/80 resize-none"></textarea>
 
       </div>
@@ -2151,7 +2151,7 @@
 
       if (
         attendanceSelect.value ===
-        '此次無法赴約'
+        '可惜有事無法參加'
       ) {
 
         if (zeroOption) {
@@ -2220,7 +2220,7 @@
 
       else if (
         attendanceSelect.value ===
-        '期待與您相聚'
+        '我可以參加!'
       ) {
 
         if (zeroOption) {
@@ -2797,7 +2797,7 @@
       if (
         attendanceSelect &&
         attendanceSelect.value ===
-        '此次無法赴約'
+        '可惜有事無法參加'
       ) {
 
         if (guestHidden) {
